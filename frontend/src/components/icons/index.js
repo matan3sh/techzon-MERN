@@ -1,0 +1,9 @@
+export { default as SearchIcon } from '@material-ui/icons/Search';
+export { default as AddShoppingCartIcon } from '@material-ui/icons/AddShoppingCart';
+export { default as MenuIcon } from '@material-ui/icons/Menu';
+export { default as CloseIcon } from '@material-ui/icons/Close';
+export { default as StarBorderIcon } from '@material-ui/icons/StarBorder';
+export { default as LocalShippingIcon } from '@material-ui/icons/LocalShipping';
+export { default as DirectionsRunIcon } from '@material-ui/icons/DirectionsRun';
+export { default as ShoppingCartIcon } from '@material-ui/icons/ShoppingCart';
+export { default as PlayArrowIcon } from '@material-ui/icons/PlayArrow';

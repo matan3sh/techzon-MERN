@@ -28,14 +28,14 @@ const BrowseItem = ({ product }) => {
           <p className='browseItem__price'>
             $<span>{product.price}</span>
           </p>
-          <p className='browseItem__free-shipping'>
+          <div className='browseItem__free-shipping'>
             <div>
               <LocalShippingIcon /> <span>Free Shipping</span>
             </div>
             <div>
               <DirectionsRunIcon /> <span>Fast Delivery</span>
             </div>
-          </p>
+          </div>
         </Link>
         <button className='button'>Add to Cart</button>
       </div>

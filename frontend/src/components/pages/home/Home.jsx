@@ -13,7 +13,7 @@ const Home = () => {
     <div className='home'>
       <Banner />
       <div className='home__latest'>
-        <button onClick={() => history.push('/browse')}>Browse All</button>
+        <h5 onClick={() => history.push('/browse')}>All Products</h5>
       </div>
       <HomeProductList products={products} />
     </div>

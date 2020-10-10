@@ -6,6 +6,7 @@ export const products = [
     rating: 4.7,
     image: 'https://m.media-amazon.com/images/I/719V9EKNDvL._AC_UY218_.jpg',
     numReviews: 125,
+    inStock: true,
   },
   {
     _id: 1235,
@@ -14,6 +15,7 @@ export const products = [
     rating: 3,
     image: 'https://m.media-amazon.com/images/I/61nlvOcfINL._AC_UY218_.jpg',
     numReviews: 111,
+    inStock: true,
   },
   {
     _id: 1236,
@@ -22,6 +24,7 @@ export const products = [
     rating: 4,
     image: 'https://m.media-amazon.com/images/I/71HtGqb9vXL._AC_UY218_.jpg',
     numReviews: 74,
+    inStock: false,
   },
   {
     _id: 1239,
@@ -30,7 +33,7 @@ export const products = [
     price: 329.98,
     rating: 3,
     image: 'https://m.media-amazon.com/images/I/71vh06cKISL._AC_UY218_.jpg',
-    numReviews: 85,
+    inStock: true,
   },
   {
     _id: 1234,
@@ -38,6 +41,6 @@ export const products = [
     price: 109.98,
     rating: 5,
     image: 'https://m.media-amazon.com/images/I/719V9EKNDvL._AC_UY218_.jpg',
-    numReviews: 42,
+    inStock: false,
   },
 ];

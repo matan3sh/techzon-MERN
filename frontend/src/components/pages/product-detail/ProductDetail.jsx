@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Rating from '@material-ui/lab/Rating';
 import {
@@ -12,6 +13,14 @@ import ProductDetailMobile from './ProductDetailMobile';
 const ProductDetail = () => {
   return (
     <>
+      <div className='productDetail__nav'>
+        <h5>
+          <Link to='/browse'>
+            <span>Browse</span>
+          </Link>
+          <small>&#8702;</small> <span>Product</span>
+        </h5>
+      </div>
       <ProductDetailMobile />
       <div className='productDetail'>
         <div className='productDetail__left'>
@@ -37,7 +46,7 @@ const ProductDetail = () => {
               826 ratings
             </span>
           </div>
-          <h3>About this item</h3>
+          <h3>Description</h3>
           <p>
             Cholas massage gun can help the user relieve muscle stiffness and
             soreness, increase blood pressure, improve the overall health of the

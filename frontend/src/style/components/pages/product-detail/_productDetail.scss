@@ -7,6 +7,20 @@
   }
 }
 
+.productDetail__nav {
+  margin: 1rem 10rem;
+  span {
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+  }
+
+  small {
+    margin: 0 5px;
+  }
+}
+
 .productDetail__left img {
   object-fit: contain;
   width: 480px;
@@ -109,7 +123,8 @@
 }
 
 @media screen and (max-width: 1400px) {
-  .productDetail {
+  .productDetail,
+  .productDetail__nav {
     margin: 2rem 2.5rem;
   }
 }
@@ -117,6 +132,9 @@
 @media screen and (max-width: 1230px) {
   .productDetail {
     margin: 2rem 0rem;
+  }
+  .productDetail__nav {
+    margin: 1rem 1rem;
   }
 }
 

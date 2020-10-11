@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { loadProducts } from 'store/product/actions';
 
 import Banner from './Banner';
 import HomeProductList from './HomeProductList';
 
-import { products } from 'data/products';
-
-const Home = () => {
+const Home = ({ products, loadProducts }) => {
   const history = useHistory();
+
+  useEffect(() => {
+    if (!products) loadProducts();
+  }, [loadProducts, products]);
+
   return (
     <div className='home'>
       <Banner />
@@ -20,7 +24,11 @@ const Home = () => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = {};
+const mapStateToProps = (state) => ({
+  products: state.mainApp.products,
+});
+const mapDispatchToProps = {
+  loadProducts,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

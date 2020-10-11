@@ -5,7 +5,7 @@ import BrowseItem from './BrowseItem';
 const BrowseList = ({ products }) => {
   return (
     <div className='browseList'>
-      {products.map((product, index) => (
+      {products?.map((product, index) => (
         <BrowseItem product={product} key={index} />
       ))}
     </div>

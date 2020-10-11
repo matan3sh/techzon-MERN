@@ -23,7 +23,7 @@
 
 .productDetail__left img {
   object-fit: contain;
-  width: 480px;
+  width: 420px;
 }
 
 .productDetail__right {
@@ -59,7 +59,21 @@
 
   p {
     font-size: 18px;
-    color: #007600 !important;
+    display: flex;
+    align-items: center;
+    span {
+      color: #007600;
+      position: relative;
+    }
+
+    .not-inStock {
+      color: #8b0000 !important;
+
+      svg {
+        position: relative;
+        top: 5px;
+      }
+    }
   }
 
   button {
@@ -114,6 +128,14 @@
 
 .productDetail__mobile {
   display: none;
+}
+
+.productDetail__center-brand {
+  position: relative;
+  top: 120px;
+  span {
+    font-family: Roboto-Bold;
+  }
 }
 
 @media screen and (max-width: 1500px) {

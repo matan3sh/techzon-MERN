@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { loadProducts } from 'store/product/actions';
+
 import BrowseList from './BrowseList';
 
-import { products } from 'data/products';
+const Browse = ({ products, loadProducts }) => {
+  useEffect(() => {
+    if (!products) loadProducts();
+  }, [loadProducts, products]);
 
-const Browse = () => {
   return (
     <div>
       <div className='browse__header'>
@@ -16,4 +21,11 @@ const Browse = () => {
   );
 };
 
-export default Browse;
+const mapStateToProps = (state) => ({
+  products: state.mainApp.products,
+});
+const mapDispatchToProps = {
+  loadProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Browse);

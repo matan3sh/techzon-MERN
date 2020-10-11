@@ -33,6 +33,7 @@ export const products = [
     price: 329.98,
     rating: 3,
     image: 'https://m.media-amazon.com/images/I/71vh06cKISL._AC_UY218_.jpg',
+    numReviews: 74,
     inStock: true,
   },
   {
@@ -41,6 +42,7 @@ export const products = [
     price: 109.98,
     rating: 5,
     image: 'https://m.media-amazon.com/images/I/719V9EKNDvL._AC_UY218_.jpg',
+    numReviews: 74,
     inStock: false,
   },
 ];

@@ -7,3 +7,4 @@ export { default as LocalShippingIcon } from '@material-ui/icons/LocalShipping';
 export { default as DirectionsRunIcon } from '@material-ui/icons/DirectionsRun';
 export { default as ShoppingCartIcon } from '@material-ui/icons/ShoppingCart';
 export { default as PlayArrowIcon } from '@material-ui/icons/PlayArrow';
+export { default as ErrorIcon } from '@material-ui/icons/Error';

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { notFound, errorHandler } = require('./middleware/error');
 const colors = require('colors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
@@ -7,12 +8,14 @@ const connectDB = require('./config/db');
 dotenv.config();
 const app = express();
 
-// Middleware
-app.use(bodyParser.json());
-
 // Routes
 const productRoutes = require('./api/product/product.routes');
 app.use('/api/products', productRoutes);
+
+// Middleware
+app.use(bodyParser.json());
+app.use(notFound);
+app.use(errorHandler);
 
 // Connect to Database
 connectDB();

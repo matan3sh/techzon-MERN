@@ -97,17 +97,10 @@
       opacity: 0.8;
     }
   }
-
-  small {
-    display: block;
-
-    span {
-      font-family: Roboto-Bold;
-    }
-  }
 }
 
 .productDetail__center {
+  height: 100%;
   h3 {
     margin-top: 2rem;
     font-family: Roboto-Bold;
@@ -118,10 +111,6 @@
   margin-top: 2rem;
 }
 
-.productDetail__right small:not(:last-child) {
-  margin-top: 2.5rem;
-}
-
 .productDetail__center p {
   margin-top: 0.5rem;
 }
@@ -130,15 +119,24 @@
   display: none;
 }
 
-.productDetail__center-brand {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  span {
+.productDetail__center-specs {
+  margin: 0 !important;
+  margin-top: 40px !important;
+  p {
+    margin-top: 0.8rem;
+    font-size: 13px !important;
     font-family: Roboto-Bold;
-    margin-right: 5px;
+
+    span {
+      font-family: Roboto;
+      margin-left: 5px;
+    }
   }
+}
+
+.m-0 {
+  margin-top: 0;
+  font-size: 14px !important;
 }
 
 @media screen and (max-width: 1500px) {

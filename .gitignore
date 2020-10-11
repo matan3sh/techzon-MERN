@@ -4,4 +4,4 @@ frontend/src/config/index.js
 
 backend/node_modules
 backend/public
-backend/config/default.json
+backend/.env

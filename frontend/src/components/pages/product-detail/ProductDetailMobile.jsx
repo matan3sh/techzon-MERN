@@ -28,6 +28,20 @@ const ProductDetailMobile = ({ product }) => {
         <img src={product.image} alt={product.title} />
         <h3>About this item</h3>
         <p>{product.description}</p>
+        <div className='productDetail__center-specs m-0'>
+          <p>
+            &#8700; Brand: <span>{product.brand}</span>
+          </p>
+          <p>
+            &#8700; Category: <span>{product.category}</span>
+          </p>
+          <p>
+            &#8700; Saler: <span>matan3sh</span>
+          </p>
+          <p>
+            &#8700; Shipes by: <span>Techzon</span>
+          </p>
+        </div>
       </div>
       <div className='productDetail__right'>
         <h2>${product.price}</h2>
@@ -50,15 +64,6 @@ const ProductDetailMobile = ({ product }) => {
           <PlayArrowIcon />
           Buy Now
         </button>
-        <small>
-          Ships from <span>Techzon</span>
-        </small>
-        <small>
-          Category <span>{product.category}</span>
-        </small>
-        <small>
-          Brand <span>{product.brand}</span>
-        </small>
       </div>
     </div>
   );

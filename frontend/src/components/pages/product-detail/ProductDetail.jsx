@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadProduct, clearProduct } from 'store/product/actions';
 
@@ -12,6 +11,7 @@ import {
 } from 'components/icons';
 import { Spinner } from 'components/shared';
 import ProductDetailMobile from './ProductDetailMobile';
+import ProductDetailNav from './ProductDetailNav';
 
 const ProductDetail = ({ match, loadProduct, clearProduct, product }) => {
   useEffect(() => {
@@ -29,18 +29,14 @@ const ProductDetail = ({ match, loadProduct, clearProduct, product }) => {
         <Spinner />
       ) : (
         <>
-          <div className='productDetail__nav'>
-            <h5>
-              <Link to='/browse'>
-                <span>Browse</span>
-              </Link>
-              <small>&#8702;</small> <span>Product</span>
-            </h5>
-          </div>
+          <ProductDetailNav />
           <ProductDetailMobile product={product} />
           <div className='productDetail'>
             <div className='productDetail__left'>
               <img src={product.image} alt={product.title} />
+              <span className='productDetail__center-brand'>
+                <span>Brand:</span> {product.brand}
+              </span>
             </div>
             <div className='productDetail__center'>
               <h2>{product.title}</h2>
@@ -88,9 +84,6 @@ const ProductDetail = ({ match, loadProduct, clearProduct, product }) => {
                 <small>
                   Category <span>{product.category}</span>
                 </small>
-              </div>
-              <div className='productDetail__center-brand'>
-                <span>Brand:</span> {product.brand}
               </div>
             </div>
           </div>

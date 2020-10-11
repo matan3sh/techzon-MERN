@@ -131,10 +131,13 @@
 }
 
 .productDetail__center-brand {
-  position: relative;
-  top: 120px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
   span {
     font-family: Roboto-Bold;
+    margin-right: 5px;
   }
 }
 

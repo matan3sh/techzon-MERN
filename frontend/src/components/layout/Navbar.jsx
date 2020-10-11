@@ -41,7 +41,7 @@ const Navbar = () => {
             </span>
             {/* <span className='navbar__option-two'>Account & Lists</span> */}
           </div>
-          <Link to='/checkout' className='navbar__link'>
+          <Link to='/cart' className='navbar__link'>
             <div className='navbar__option-icons'>
               <div className='navbar__option-cart-number'>
                 <span>8</span>

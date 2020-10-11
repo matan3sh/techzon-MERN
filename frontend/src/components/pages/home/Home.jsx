@@ -5,8 +5,9 @@ import { loadProducts } from 'store/product/actions';
 
 import Banner from './Banner';
 import HomeProductList from './HomeProductList';
+import { Spinner, Error } from 'components/shared';
 
-const Home = ({ products, loadProducts }) => {
+const Home = ({ products, loadProducts, error, loading }) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -19,13 +20,21 @@ const Home = ({ products, loadProducts }) => {
       <div className='home__latest'>
         <h5 onClick={() => history.push('/browse')}>All Products</h5>
       </div>
-      <HomeProductList products={products} />
+      {loading ? (
+        <Spinner />
+      ) : error ? (
+        <Error error={error} />
+      ) : (
+        <HomeProductList products={products} />
+      )}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   products: state.mainApp.products,
+  loading: state.mainApp.loading,
+  error: state.mainApp.error,
 });
 const mapDispatchToProps = {
   loadProducts,

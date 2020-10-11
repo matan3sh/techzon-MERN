@@ -7,7 +7,7 @@ import {
   Signin,
   Signup,
   Browse,
-  Checkout,
+  Cart,
   ProductDetail,
 } from 'components/pages';
 
@@ -19,7 +19,7 @@ function App() {
         <Route exact path='/browse' component={Browse} />
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />
-        <Route exact path='/checkout' component={Checkout} />
+        <Route exact path='/cart/:id?' component={Cart} />
         <Route exact path='/:id' component={ProductDetail} />
         <Route exact path='/' component={Home} />
       </Switch>

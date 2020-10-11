@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Rating from '@material-ui/lab/Rating';
 
 import {
@@ -8,7 +8,9 @@ import {
   ErrorIcon,
 } from 'components/icons';
 
-const ProductDetailMobile = ({ product }) => {
+const ProductDetailMobile = ({ product, onAddToCart }) => {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className='productDetail__mobile'>
       <div className='productDetail__left-mobile'>
@@ -55,8 +57,25 @@ const ProductDetailMobile = ({ product }) => {
               Not In Stock
             </span>
           )}
-        </p>{' '}
-        <button>
+        </p>
+        {product.countInStock > 0 && (
+          <div className='productDetail__right-qty'>
+            Qty:
+            <select
+              name='quantity'
+              id='quantity'
+              onChange={(e) => setQuantity(e.target.value)}
+              value={quantity}
+            >
+              {[...Array(product.countInStock)].map((qauntity, index) => (
+                <option key={index + 1} value={index + 1}>
+                  {index + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        <button onClick={() => onAddToCart(quantity)}>
           <ShoppingCartIcon />
           Add to Cart
         </button>

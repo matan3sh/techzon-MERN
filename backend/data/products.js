@@ -10,6 +10,7 @@ module.exports.products = [
     inStock: true,
     brand: 'Google',
     category: 'Electronics',
+    countInStock: 3,
   },
   {
     title: 'Logitech MX Master 2S Wireless Mouse',
@@ -22,6 +23,7 @@ module.exports.products = [
     inStock: true,
     brand: 'Logitech',
     category: 'Computers',
+    countInStock: 10,
   },
   {
     title: 'Apple Watch Series 5 (GPS, 44mm)',
@@ -34,6 +36,7 @@ module.exports.products = [
     inStock: false,
     brand: 'Apple',
     category: 'Watches',
+    countInStock: 0,
   },
   {
     title:
@@ -47,6 +50,7 @@ module.exports.products = [
     inStock: true,
     brand: 'Apple',
     category: 'Computers',
+    countInStock: 10,
   },
   {
     title: 'Echo (3rd Gen) bundle with Echo Flex - Charcoal',
@@ -59,5 +63,6 @@ module.exports.products = [
     inStock: false,
     brand: 'Google',
     category: 'Electronics',
+    countInStock: 7,
   },
 ];

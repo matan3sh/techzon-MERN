@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ShoppingCartIcon, PlayArrowIcon, ErrorIcon } from 'components/icons';
-const ProductDetailRight = ({ product }) => {
+
+const ProductDetailRight = ({ product, onAddToCart }) => {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className='productDetail__right'>
       <h2>${product.price}</h2>
@@ -15,7 +18,24 @@ const ProductDetailRight = ({ product }) => {
           </span>
         )}
       </p>
-      <button>
+      {product.countInStock > 0 && (
+        <div className='productDetail__right-qty'>
+          Qty:
+          <select
+            name='quantity'
+            id='quantity'
+            onChange={(e) => setQuantity(e.target.value)}
+            value={quantity}
+          >
+            {[...Array(product.countInStock)].map((qauntity, index) => (
+              <option key={index + 1} value={index + 1}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+      <button onClick={() => onAddToCart(quantity)}>
         <ShoppingCartIcon />
         Add to Cart
       </button>

@@ -1,29 +1,46 @@
 const initialState = {
   products: null,
-  product: null,
+  product: { reviews: [] },
+  loading: false,
+  error: null,
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'SET_PRODUCTS':
+    case 'PRODUCT_LIST_REQUEST':
       return {
         ...state,
+        loading: true,
+        products: [],
+      };
+    case 'PRODUCT_LIST_SUCCESS':
+      return {
+        ...state,
+        loading: false,
         products: action.payload,
       };
-    case 'CLEAR_PRODUCTS':
+    case 'PRODUCT_LIST_FAIL':
       return {
         ...state,
-        products: null,
+        loading: false,
+        error: action.payload,
       };
-    case 'SET_PRODUCT':
+    case 'PRODUCT_DETAILS_REQUEST':
       return {
         ...state,
+        loading: true,
+      };
+    case 'PRODUCT_DETAILS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
         product: action.payload,
       };
-    case 'CLEAR_PRODUCT':
+    case 'PRODUCT_DETAILS_FAIL':
       return {
         ...state,
-        product: null,
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

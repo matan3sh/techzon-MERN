@@ -30,8 +30,10 @@ const HomeProductItem = ({ product }) => {
         <img src={product.image} alt={product.title} />
       </Link>
       <button
-        className='button'
-        onClick={() => history.push(`/cart/${product._id}?qty=1`)}
+        className={`button ${product.countInStock > 0 ? '' : 'disable'}`}
+        onClick={() =>
+          product.countInStock > 0 && history.push(`/cart/${product._id}?qty=1`)
+        }
       >
         Add to Cart
       </button>

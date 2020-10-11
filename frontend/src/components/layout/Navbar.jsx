@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 import {
   SearchIcon,
@@ -10,7 +12,7 @@ import {
 import logo from 'assets/img/logo.png';
 import Sidenav from './Sidenav';
 
-const Navbar = () => {
+const Navbar = ({ cartItems }) => {
   const [openSidenav, setOpenSidenav] = useState(false);
 
   const onToggle = () => setOpenSidenav((prevState) => !prevState);
@@ -44,7 +46,11 @@ const Navbar = () => {
           <Link to='/cart' className='navbar__link'>
             <div className='navbar__option-icons'>
               <div className='navbar__option-cart-number'>
-                <span>8</span>
+                <span>
+                  {Number(
+                    cartItems.reduce((acc, item) => acc + item.quantity, 0)
+                  )}
+                </span>
               </div>
               <AddShoppingCartIcon className='navbar__option-cart-icon' />
               <span className='navbar__option-cart'>Cart</span>
@@ -57,4 +63,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  cartItems: state.cartApp.cartItems,
+});
+
+export default connect(mapStateToProps, null)(Navbar);

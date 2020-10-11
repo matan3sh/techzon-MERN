@@ -35,11 +35,14 @@ const ProductDetailRight = ({ product, onAddToCart }) => {
           </select>
         </div>
       )}
-      <button onClick={() => onAddToCart(quantity)}>
+      <button
+        className={`${!product.inStock && 'disable'}`}
+        onClick={() => product.inStock && onAddToCart(quantity)}
+      >
         <ShoppingCartIcon />
         Add to Cart
       </button>
-      <button>
+      <button className={`${!product.inStock && 'disable'}`}>
         <PlayArrowIcon />
         Buy Now
       </button>

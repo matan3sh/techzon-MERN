@@ -2,7 +2,6 @@ import productService from 'services/productService';
 
 export const addToCart = (id, quantity) => async (dispatch, getState) => {
   const product = await productService.getById(id);
-  console.log(product);
   dispatch({
     type: 'CART_ADD_ITEM',
     payload: {
@@ -15,6 +14,14 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
       quantity,
     },
   });
+  localStorage.setItem(
+    'cartItems',
+    JSON.stringify(getState().cartApp.cartItems)
+  );
+};
+
+export const removeFromCart = (id) => async (dispatch, getState) => {
+  dispatch({ type: 'CART_REMOVE_ITEM', payload: id });
   localStorage.setItem(
     'cartItems',
     JSON.stringify(getState().cartApp.cartItems)

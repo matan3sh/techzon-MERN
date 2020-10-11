@@ -60,7 +60,7 @@ module.exports.products = [
       'Meet Echo - Echo (3rd Gen) has new premium speakers powered by Dolby to play 360° audio with crisp vocals and dynamic bass response. Enjoy premium sound - Personalize your listening experience by adjusting the equalizer settings. Or pair with a second Echo (3rd Gen) or Echo Plus (2nd Gen) for stereo sound.',
     image: 'https://m.media-amazon.com/images/I/719V9EKNDvL._AC_UY218_.jpg',
     numReviews: 74,
-    inStock: false,
+    inStock: true,
     brand: 'Google',
     category: 'Electronics',
     countInStock: 7,

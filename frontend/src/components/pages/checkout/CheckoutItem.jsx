@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addToCart, removeFromCart } from 'store/cart/actions';
+
 import Rating from '@material-ui/lab/Rating';
 import { StarBorderIcon } from 'components/icons';
 
-const CheckoutPreview = ({ item }) => {
+const CheckoutPreview = ({ item, addToCart, removeFromCart }) => {
   return (
     <div className='checkoutProduct'>
       <img src={item.image} alt={item.title} />
@@ -24,17 +27,34 @@ const CheckoutPreview = ({ item }) => {
             emptyIcon={<StarBorderIcon fontSize='inherit' />}
           />
         </div>
-        <div className='checkoutProduct__quantity'>
-          <p>Quantity:</p> <span>{item.quantity}</span>
+        <div className='productDetail__right-qty'>
+          Qty:
+          <select
+            name='quantity'
+            id='quantity'
+            onChange={(e) => addToCart(item.product, e.target.value)}
+            value={item.quantity}
+          >
+            {[...Array(item.countInStock)].map((qauntity, index) => (
+              <option key={index + 1} value={index + 1}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
         </div>
         <div className='checkoutProduct__footer'>
-          <span>Delete</span>
+          <span className='checkoutProduct__footer-price'>Speacial Price</span>
           <span> | </span>
-          <span>Add</span>
+          <span onClick={() => removeFromCart(item.product)}>Delete</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default CheckoutPreview;
+const mapDispatchToProps = {
+  addToCart,
+  removeFromCart,
+};
+
+export default connect(null, mapDispatchToProps)(CheckoutPreview);

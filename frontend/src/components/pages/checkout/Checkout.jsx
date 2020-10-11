@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart } from 'store/cart/actions';
 
@@ -11,8 +10,11 @@ const Checkout = ({ match, location, cartItems, history, addToCart }) => {
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 
   useEffect(() => {
-    if (productId) addToCart(productId, qty);
-  }, [productId, qty]);
+    if (productId) {
+      addToCart(productId, qty);
+      history.replace('/cart');
+    }
+  }, [productId, qty, addToCart, history]);
 
   return (
     <div className='checkout'>

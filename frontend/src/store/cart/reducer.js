@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (item) => item._id !== action.payload
+          (item) => item.product !== action.payload
         ),
       };
     default:

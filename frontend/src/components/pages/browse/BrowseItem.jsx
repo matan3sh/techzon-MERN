@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Rating from '@material-ui/lab/Rating';
 import {
@@ -9,6 +9,8 @@ import {
 } from 'components/icons';
 
 const BrowseItem = ({ product }) => {
+  const history = useHistory();
+
   return (
     <div className='browseItem'>
       <img src={product.image} alt={product.title} />
@@ -37,7 +39,12 @@ const BrowseItem = ({ product }) => {
             </div>
           </div>
         </Link>
-        <button className='button'>Add to Cart</button>
+        <button
+          className='button'
+          onClick={() => history.push(`/cart/${product._id}?qty=1`)}
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

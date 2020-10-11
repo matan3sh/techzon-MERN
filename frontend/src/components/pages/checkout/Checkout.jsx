@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addToCart } from 'store/cart/actions';
 
 import CheckoutList from './CheckoutList';
 import Subtotal from './Subtotal';
-import { products } from 'data/products';
 
-const Checkout = () => {
+const Checkout = ({ match, location, cartItems, history, addToCart }) => {
+  const productId = match.params.id;
+  const qty = location.search ? Number(location.search.split('=')[1]) : 1;
+
+  useEffect(() => {
+    if (productId) addToCart(productId, qty);
+  }, [productId, qty]);
+
   return (
     <div className='checkout'>
       <div className='checkout__left'>
@@ -13,7 +22,7 @@ const Checkout = () => {
           alt='amazon-ad'
           className='checkout__ad'
         />
-        {!products?.length ? (
+        {!cartItems?.length ? (
           <div>
             <h2>Your Shopping Basket is Empty</h2>
             <p>
@@ -24,17 +33,24 @@ const Checkout = () => {
         ) : (
           <div>
             <h2 className='checkout__title'>Your Shopping Basket</h2>
-            <CheckoutList basket={products} />
+            <CheckoutList basket={cartItems} />
           </div>
         )}
       </div>
-      {products.length > 0 && (
+      {cartItems.length > 0 && (
         <div className='checkout__right'>
-          <Subtotal basket={products} />
+          <Subtotal basket={cartItems} />
         </div>
       )}
     </div>
   );
 };
 
-export default Checkout;
+const mapStateToProps = (state) => ({
+  cartItems: state.cartApp.cartItems,
+});
+const mapDispatchToProps = {
+  addToCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

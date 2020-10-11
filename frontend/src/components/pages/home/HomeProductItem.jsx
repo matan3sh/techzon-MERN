@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Rating from '@material-ui/lab/Rating';
 import { StarBorderIcon } from 'components/icons';
 
 const HomeProductItem = ({ product }) => {
+  const history = useHistory();
+
   return (
     <div className='product'>
       <Link to={`/${product._id}`}>
@@ -27,7 +29,10 @@ const HomeProductItem = ({ product }) => {
         </div>
         <img src={product.image} alt={product.title} />
       </Link>
-      <button className='button' onClick={() => console.log('Add')}>
+      <button
+        className='button'
+        onClick={() => history.push(`/cart/${product._id}?qty=1`)}
+      >
         Add to Cart
       </button>
     </div>

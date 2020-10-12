@@ -8,12 +8,16 @@ const connectDB = require('./config/db');
 dotenv.config();
 const app = express();
 
+// Middleware
+app.use(bodyParser.json());
+
 // Routes
 const productRoutes = require('./api/product/product.routes');
 app.use('/api/products', productRoutes);
+const userRoutes = require('./api/user/user.routes');
+app.use('/api/users', userRoutes);
 
 // Middleware
-app.use(bodyParser.json());
 app.use(notFound);
 app.use(errorHandler);
 

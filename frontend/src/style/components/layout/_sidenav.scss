@@ -7,7 +7,6 @@
   width: 250px;
   padding-top: 60px;
   background-color: #fff;
-  font-family: Roboto, serif;
   transform: translateX(-250px);
   transition: transform 0.3s;
 }
@@ -20,7 +19,8 @@
 .sidenav__link {
   display: flex;
   align-items: center;
-  color: #000;
+  font-family: Lato-Bold;
+  color: $main-color;
   font-size: 16px;
   padding: 20px;
   line-height: 16px;
@@ -30,6 +30,20 @@
     background-color: #eee;
     cursor: pointer;
   }
+
+  span {
+    margin-left: 10px;
+    color: $second-color;
+  }
+
+  svg {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+}
+
+.sidenav__links .sidenav__link:not(:last-child) {
+  border-bottom: 1px #ccc dotted;
 }
 
 .sidenav__overlay {

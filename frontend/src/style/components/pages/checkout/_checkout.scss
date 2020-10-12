@@ -60,14 +60,28 @@
 }
 
 .checkoutProduct__footer {
+  display: flex;
+  align-items: center;
   margin: 0 5px;
   margin-top: 0.5rem;
   text-transform: capitalize;
-  font-size: 14px;
-  color: #0066c0;
 
   &:hover {
     cursor: pointer;
+  }
+
+  span {
+    position: relative;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #0066c0;
+  }
+
+  .spred {
+    margin: 0 15px;
+    position: relative;
+    margin-top: 10px;
+    color: #777;
   }
 }
 
@@ -101,5 +115,10 @@
 
   .checkoutProduct button {
     font-size: 10px;
+  }
+
+  .checkoutProduct img {
+    width: 120px;
+    height: 120px;
   }
 }

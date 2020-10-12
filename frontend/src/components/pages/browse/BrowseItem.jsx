@@ -25,7 +25,9 @@ const BrowseItem = ({ product }) => {
               precision={0.1}
               emptyIcon={<StarBorderIcon fontSize='inherit' />}
             />
-            <span className='browseItem__rating-length'> 219</span>
+            <span className='browseItem__rating-length'>
+              ({product.numReviews})
+            </span>
           </div>
           <p className='browseItem__price'>
             $<span>{product.price}</span>

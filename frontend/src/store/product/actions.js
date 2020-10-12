@@ -1,10 +1,11 @@
-import productService from 'services/productService';
+import axios from 'axios';
+const PATH = '/api/products';
 
 export const loadProducts = () => async (dispatch) => {
   try {
     dispatch({ type: 'PRODUCT_LIST_REQUEST' });
-    const products = await productService.query();
-    dispatch({ type: 'PRODUCT_LIST_SUCCESS', payload: products });
+    const { data } = await axios.get(PATH);
+    dispatch({ type: 'PRODUCT_LIST_SUCCESS', payload: data });
   } catch (error) {
     dispatch({
       type: 'PRODUCT_LIST_FAIL',
@@ -16,11 +17,11 @@ export const loadProducts = () => async (dispatch) => {
   }
 };
 
-export const loadProduct = (productId) => async (dispatch) => {
+export const loadProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: 'PRODUCT_DETAILS_REQUEST' });
-    const product = await productService.getById(productId);
-    dispatch({ type: 'PRODUCT_DETAILS_SUCCESS', payload: product });
+    const { data } = await axios.get(`${PATH}/${id}`);
+    dispatch({ type: 'PRODUCT_DETAILS_SUCCESS', payload: data });
   } catch (error) {
     dispatch({
       type: 'PRODUCT_DETAILS_FAIL',
@@ -30,4 +31,8 @@ export const loadProduct = (productId) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const clearProduct = () => (dispatch) => {
+  dispatch({ type: 'PRODUCT_DETAILS_CLEAR' });
 };

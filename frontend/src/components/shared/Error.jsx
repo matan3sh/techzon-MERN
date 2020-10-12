@@ -3,7 +3,7 @@ import React from 'react';
 const Error = ({ error }) => {
   return (
     <div style={errorStyle}>
-      <p style={errorMessage}>{error}</p>
+      <h2 style={errorMessage}>{error}</h2>
     </div>
   );
 };
@@ -12,17 +12,18 @@ const errorStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  margin: 'auto',
+  margin: '10px auto',
   textAlign: 'center',
   backgroundColor: '#d9534f',
-  width: '230px',
-  padding: '20px',
+  width: '100%',
+  padding: '10px 5px',
 };
 
 const errorMessage = {
   color: '#fff',
   fontWeight: '900',
-  fontSize: '20px',
+  fontSize: '14px',
+  marginTop: '0px !important',
 };
 
 export default Error;

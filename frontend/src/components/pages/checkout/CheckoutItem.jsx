@@ -27,24 +27,23 @@ const CheckoutPreview = ({ item, addToCart, removeFromCart }) => {
             emptyIcon={<StarBorderIcon fontSize='inherit' />}
           />
         </div>
-        <div className='productDetail__right-qty'>
-          Qty:
-          <select
-            name='quantity'
-            id='quantity'
-            onChange={(e) => addToCart(item.product, e.target.value)}
-            value={item.quantity}
-          >
-            {[...Array(item.countInStock)].map((qauntity, index) => (
-              <option key={index + 1} value={index + 1}>
-                {index + 1}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className='checkoutProduct__footer'>
-          <span className='checkoutProduct__footer-price'>Speacial Price</span>
-          <span> | </span>
+          <div className='productDetail__right-qty'>
+            Qty:
+            <select
+              name='quantity'
+              id='quantity'
+              onChange={(e) => addToCart(item.product, e.target.value)}
+              value={item.quantity}
+            >
+              {[...Array(item.countInStock)].map((qauntity, index) => (
+                <option key={index + 1} value={index + 1}>
+                  {index + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+          <span className='spred'>|</span>
           <span onClick={() => removeFromCart(item.product)}>Delete</span>
         </div>
       </div>

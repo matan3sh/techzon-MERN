@@ -12,7 +12,7 @@ import {
 import logo from 'assets/img/logo.png';
 import Sidenav from './Sidenav';
 
-const Navbar = ({ cartItems }) => {
+const Navbar = ({ cartItems, user }) => {
   const [openSidenav, setOpenSidenav] = useState(false);
 
   const onToggle = () => setOpenSidenav((prevState) => !prevState);
@@ -39,9 +39,18 @@ const Navbar = ({ cartItems }) => {
         <div className='navbar__list'>
           <div className='navbar__option navbar__link'>
             <span className='navbar__option-one'>
-              <Link to='/signup'>Signup</Link> /<Link to='/signin'>Signin</Link>
+              {user ? (
+                <span>{user.name}</span>
+              ) : (
+                <>
+                  <Link to='/signup'>Signup</Link> /
+                  <Link to='/signin'>Signin</Link>
+                </>
+              )}
             </span>
-            {/* <span className='navbar__option-two'>Account & Lists</span> */}
+            {user && (
+              <span className='navbar__option-two'>Account & Lists</span>
+            )}
           </div>
           <Link to='/cart' className='navbar__link'>
             <div className='navbar__option-icons'>
@@ -65,6 +74,7 @@ const Navbar = ({ cartItems }) => {
 
 const mapStateToProps = (state) => ({
   cartItems: state.cartApp.cartItems,
+  user: state.userApp.user,
 });
 
 export default connect(mapStateToProps, null)(Navbar);

@@ -42,6 +42,13 @@ export default function reducer(state = initialState, action) {
         loading: false,
         error: action.payload,
       };
+    case 'PRODUCT_DETAILS_CLEAR':
+      return {
+        ...state,
+        product: { reviews: [] },
+        loading: false,
+        error: null,
+      };
     default:
       return state;
   }

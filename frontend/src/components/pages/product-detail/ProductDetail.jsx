@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadProduct } from 'store/product/actions';
+import { loadProduct, clearProduct } from 'store/product/actions';
 
 import { Spinner, Error } from 'components/shared';
 
@@ -11,11 +11,21 @@ import ProductDetailLeft from './ProductDetailLeft';
 import ProductDetailCenter from './ProductDetailCenter';
 import ProductDetailRight from './ProductDetailRight';
 
-const ProductDetail = ({ match, loadProduct, product, loading, error }) => {
+const ProductDetail = ({
+  match,
+  loadProduct,
+  clearProduct,
+  product,
+  loading,
+  error,
+}) => {
   const history = useHistory();
   useEffect(() => {
     const { id } = match.params;
     loadProduct(id);
+    return () => {
+      clearProduct();
+    };
     // eslint-disable-next-line
   }, [loadProduct]);
 
@@ -52,6 +62,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   loadProduct,
+  clearProduct,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -24,7 +24,7 @@ const HomeProductItem = ({ product }) => {
               precision={0.1}
               emptyIcon={<StarBorderIcon fontSize='inherit' />}
             />
-            <span className='product__numReviews'>{product.numReviews}</span>
+            <span className='product__numReviews'>({product.numReviews})</span>
           </div>
         </div>
         <img src={product.image} alt={product.title} />

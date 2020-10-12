@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { logoutUser } from 'store/user/actions';
 
 import { Link } from 'react-router-dom';
 import {
@@ -7,16 +8,21 @@ import {
   AddShoppingCartIcon,
   MenuIcon,
   CloseIcon,
+  ArrowDropDownIcon,
 } from 'components/icons';
 
 import logo from 'assets/img/logo.png';
 import Sidenav from './Sidenav';
+import Dropdown from './Dropdown';
 
-const Navbar = ({ cartItems, user }) => {
+const Navbar = ({ cartItems, user, logoutUser }) => {
   const [openSidenav, setOpenSidenav] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   const onToggle = () => setOpenSidenav((prevState) => !prevState);
   const onClose = () => setOpenSidenav(false);
+
+  const onLogout = () => logoutUser();
 
   return (
     <>
@@ -49,7 +55,12 @@ const Navbar = ({ cartItems, user }) => {
               )}
             </span>
             {user && (
-              <span className='navbar__option-two'>Account & Lists</span>
+              <span
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className='navbar__option-two'
+              >
+                Account & Lists <ArrowDropDownIcon />
+              </span>
             )}
           </div>
           <Link to='/cart' className='navbar__link'>
@@ -67,7 +78,10 @@ const Navbar = ({ cartItems, user }) => {
           </Link>
         </div>
       </nav>
-      <Sidenav open={openSidenav} onClose={onClose} />
+      <Sidenav open={openSidenav} onClose={onClose} onLogout={onLogout} />
+      {openDropdown && (
+        <Dropdown onClose={setOpenDropdown} onLogout={onLogout} />
+      )}
     </>
   );
 };
@@ -77,4 +91,8 @@ const mapStateToProps = (state) => ({
   user: state.userApp.user,
 });
 
-export default connect(mapStateToProps, null)(Navbar);
+const mapDispatchToProps = {
+  logoutUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

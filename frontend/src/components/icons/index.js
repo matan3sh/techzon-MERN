@@ -14,3 +14,4 @@ export { default as LockOpenIcon } from '@material-ui/icons/LockOpen';
 export { default as VpnKeyIcon } from '@material-ui/icons/VpnKey';
 export { default as ExitToAppIcon } from '@material-ui/icons/ExitToApp';
 export { default as PersonIcon } from '@material-ui/icons/Person';
+export { default as ArrowDropDownIcon } from '@material-ui/icons/ArrowDropDown';

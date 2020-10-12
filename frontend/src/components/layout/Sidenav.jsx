@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
@@ -12,26 +12,48 @@ import {
   PersonIcon,
 } from 'components/icons';
 
-const Sidenav = ({ open, onClose, user, cartItems }) => {
+const Sidenav = ({ open, onClose, user, cartItems, onLogout }) => {
   const userLinks = (
     <div className='sidenav__links'>
       <Link to='/' className='sidenav__link' onClick={() => onClose()}>
         <HomeIcon /> Home
       </Link>
-      <Link to='/checkout' className='sidenav__link' onClick={() => onClose()}>
+      <NavLink
+        activeClassName='active__link'
+        to='/cart'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <ShoppingCartIcon /> Cart
         <span>
           ({Number(cartItems.reduce((acc, item) => acc + item.quantity, 0))})
         </span>
-      </Link>
-      <Link to='/browse' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <NavLink
+        activeClassName='active__link'
+        to='/browse'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <WebIcon /> Browse
-      </Link>
-      <Link to='/profile' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <NavLink
+        to='/profile'
+        className='sidenav__link'
+        activeClassName='active__link'
+        onClick={() => onClose()}
+      >
         <PersonIcon />
         Profile
-      </Link>
-      <a href='/' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <a
+        href='/'
+        className='sidenav__link'
+        onClick={() => {
+          onLogout();
+          onClose();
+        }}
+      >
         <ExitToAppIcon />
         Logout
       </a>
@@ -42,22 +64,42 @@ const Sidenav = ({ open, onClose, user, cartItems }) => {
       <Link to='/' className='sidenav__link' onClick={() => onClose()}>
         <HomeIcon /> Home
       </Link>
-      <Link to='/checkout' className='sidenav__link' onClick={() => onClose()}>
+      <NavLink
+        to='/cart'
+        activeClassName='active__link'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <ShoppingCartIcon /> Cart
         <span>
           ({Number(cartItems.reduce((acc, item) => acc + item.quantity, 0))})
         </span>
-      </Link>
-      <Link to='/browse' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <NavLink
+        activeClassName='active__link'
+        to='/browse'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <WebIcon /> Browse
-      </Link>
-      <Link to='/signin' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <NavLink
+        activeClassName='active__link'
+        to='/signin'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <VpnKeyIcon /> Signin
-      </Link>
-      <Link to='/signup' className='sidenav__link' onClick={() => onClose()}>
+      </NavLink>
+      <NavLink
+        activeClassName='active__link'
+        to='/signup'
+        className='sidenav__link'
+        onClick={() => onClose()}
+      >
         <LockOpenIcon />
         Signup
-      </Link>
+      </NavLink>
     </div>
   );
   return (

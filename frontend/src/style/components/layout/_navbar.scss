@@ -78,6 +78,17 @@
   font-weight: 800;
 }
 
+.navbar__option-two {
+  &:hover {
+    cursor: pointer;
+  }
+  svg {
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+  }
+}
+
 .navbar__option-icons {
   display: flex;
   align-items: center;

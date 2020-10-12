@@ -9,6 +9,8 @@ import {
   Browse,
   Cart,
   ProductDetail,
+  Profile,
+  Shipping,
 } from 'components/pages';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route exact path='/shipping' component={Shipping} />
+        <Route exact path='/profile' component={Profile} />
         <Route exact path='/browse' component={Browse} />
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />

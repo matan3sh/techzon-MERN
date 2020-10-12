@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadProducts } from 'store/product/actions';
 
@@ -8,8 +7,6 @@ import HomeProductList from './HomeProductList';
 import { Spinner, Error } from 'components/shared';
 
 const Home = ({ products, loadProducts, error, loading }) => {
-  const history = useHistory();
-
   useEffect(() => {
     if (!products) loadProducts();
   }, [loadProducts, products]);

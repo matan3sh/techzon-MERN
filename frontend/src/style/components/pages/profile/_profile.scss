@@ -1,0 +1,56 @@
+.profile {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  margin: 2rem 10rem;
+  height: 100%;
+}
+
+.profile-left {
+  flex: 0.2;
+}
+
+.profile-right {
+  flex: 0.8;
+  margin-left: 5rem;
+  height: 380px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1480px) {
+  .profile {
+    margin: 2rem 5rem;
+  }
+}
+
+@media screen and (max-width: 1310px) {
+  .profile {
+    margin: 2rem 2.5rem;
+  }
+  .profile-right {
+    margin-left: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .profile {
+    margin: 2rem 0.5rem;
+  }
+  .profile-right {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .profile {
+    flex-direction: column;
+  }
+  .profile-right {
+    margin-top: 2rem;
+    margin-left: 0;
+    width: 95%;
+  }
+  .profile-left {
+    width: 95%;
+  }
+}

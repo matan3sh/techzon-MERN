@@ -26,44 +26,46 @@ const Signin = ({ location, history, loginUser, user, loading, error }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className='auth__container'>
-          <h1>Sign In</h1>
+        <>
           {error && <Error error={error} />}
-          <form onSubmit={onSubmit}>
-            <h5>Email</h5>
-            <input
-              name='email'
-              type='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <h5>Password</h5>
-            <input
-              name='password'
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type='submit' className='auth__signInButton'>
-              Sign In
-            </button>
-          </form>
+          <div className='auth__container'>
+            <h1>Sign In</h1>
+            <form onSubmit={onSubmit}>
+              <h5>Email</h5>
+              <input
+                name='email'
+                type='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <h5>Password</h5>
+              <input
+                name='password'
+                type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type='submit' className='auth__signInButton'>
+                Sign In
+              </button>
+            </form>
 
-          <p>
-            By continuing, you agree to Amazon's Conditions of Use and Privacy
-            Notice.
-          </p>
-          <button
-            onClick={() =>
-              history.push(
-                `${redirect ? `/signup?redirect=${redirect}` : '/signup'}`
-              )
-            }
-            className='auth__registerButton'
-          >
-            Create your Amazon Account
-          </button>
-        </div>
+            <p>
+              By continuing, you agree to Amazon's Conditions of Use and Privacy
+              Notice.
+            </p>
+            <button
+              onClick={() =>
+                history.push(
+                  `${redirect ? `/signup?redirect=${redirect}` : '/signup'}`
+                )
+              }
+              className='auth__registerButton'
+            >
+              Create your Amazon Account
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

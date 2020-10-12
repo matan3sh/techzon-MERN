@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { saveShippongAddress } from 'store/cart/actions';
 
+import CheckoutSteps from './CheckoutSteps';
+
 const Shipping = ({ history, saveShippongAddress, shippingAddress }) => {
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
@@ -16,7 +18,8 @@ const Shipping = ({ history, saveShippongAddress, shippingAddress }) => {
 
   return (
     <div className='shipping'>
-      <div className='auth__container'>
+      <div className='shipping__container'>
+        <CheckoutSteps step1 step2 />
         <h1>Sipping Details</h1>
         <form onSubmit={onSubmit}>
           <h5>Address</h5>

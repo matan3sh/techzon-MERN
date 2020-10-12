@@ -2,8 +2,13 @@ const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
 
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
+  ? JSON.parse(localStorage.getItem('shippingAddress'))
+  : {};
+
 const initialState = {
   cartItems: cartItemsFromStorage,
+  shippingAddress: shippingAddressFromStorage,
 };
 
 export default function reducer(state = initialState, action) {
@@ -32,6 +37,11 @@ export default function reducer(state = initialState, action) {
         cartItems: state.cartItems.filter(
           (item) => item.product !== action.payload
         ),
+      };
+    case 'CART_SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;

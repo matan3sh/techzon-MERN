@@ -11,6 +11,7 @@ import {
   ProductDetail,
   Profile,
   Shipping,
+  Payment,
 } from 'components/pages';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route exact path='/payment' component={Payment} />
         <Route exact path='/shipping' component={Shipping} />
         <Route exact path='/profile' component={Profile} />
         <Route exact path='/browse' component={Browse} />

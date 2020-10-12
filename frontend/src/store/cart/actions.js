@@ -28,3 +28,8 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
     JSON.stringify(getState().cartApp.cartItems)
   );
 };
+
+export const saveShippongAddress = (data) => async (dispatch) => {
+  dispatch({ type: 'CART_SAVE_SHIPPING_ADDRESS', payload: data });
+  localStorage.setItem('shippingAddress', JSON.stringify(data));
+};

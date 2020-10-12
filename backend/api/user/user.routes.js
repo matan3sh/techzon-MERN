@@ -15,9 +15,9 @@ router.post('/login', asyncHandler(login));
 // @access Private
 router.get('/profile', protect, asyncHandler(getUserProfile));
 
-// @desc Fetch single product
-// @route GET /api/products/:id
+// @desc Register a new user
+// @route POST /api/users/register
 // @access Public
-router.get('/register', asyncHandler(register));
+router.post('/register', asyncHandler(register));
 
 module.exports = router;

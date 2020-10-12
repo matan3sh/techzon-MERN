@@ -1,55 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from 'store/user/actions';
 
-const Signup = () => {
-  const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+import { Error } from 'components/shared';
+
+const Signup = ({ location, user, error, register }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
   const history = useHistory();
+
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  useEffect(() => {
+    if (user) {
+      history.push(redirect);
+    }
+  }, [user, history, redirect]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) setMessage('Passwords do not match!');
+    else {
+      register(name, email, password);
+    }
+  };
 
   return (
     <div className='auth'>
       <div className='auth__container'>
         <h1>Sign Up</h1>
-        <form>
+        {error && <Error error={error} />}
+        {message && <Error error={message} />}
+        <form onSubmit={onSubmit}>
           <h5>Username</h5>
           <input
             name='username'
             type='text'
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <h5>Email</h5>
           <input
             name='email'
             type='email'
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <h5>Password</h5>
           <input
             name='password'
             type='password'
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <h5>Confirm Password</h5>
           <input
             name='confirmPassword'
             type='password'
-            value={user.confirmPassword}
-            onChange={(e) =>
-              setUser({ ...user, confirmPassword: e.target.value })
-            }
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button
-            onClick={() => console.log('login')}
-            type='submit'
-            className='auth__signInButton'
-          >
+          <button type='submit' className='auth__signInButton'>
             Sign Up
           </button>
         </form>
@@ -69,4 +84,13 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = (state) => ({
+  user: state.userApp.user,
+  error: state.userApp.error,
+});
+
+const mapDispatchToProps = {
+  register,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

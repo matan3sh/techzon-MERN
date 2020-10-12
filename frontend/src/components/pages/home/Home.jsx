@@ -17,9 +17,6 @@ const Home = ({ products, loadProducts, error, loading }) => {
   return (
     <div className='home'>
       <Banner />
-      <div className='home__latest'>
-        <h5 onClick={() => history.push('/browse')}>All Products</h5>
-      </div>
       {loading ? (
         <Spinner />
       ) : error ? (

@@ -35,7 +35,7 @@ const BrowseItem = ({ product }) => {
           </p>
           <div className='browseItem__free-shipping'>
             <div>
-              <LocalShippingIcon /> <span>Free Shipping</span>
+              <LocalShippingIcon /> <span>Free Shipping Over $100</span>
             </div>
             <div>
               <DirectionsRunIcon /> <span>Fast Delivery</span>

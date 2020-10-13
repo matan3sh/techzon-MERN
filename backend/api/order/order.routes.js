@@ -12,8 +12,8 @@ router.get('/', asyncHandler(getOrders));
 
 // @desc Fetch single order
 // @route GET /api/orders/:id
-// @access Public
-router.get('/:id', asyncHandler(getOrder));
+// @access Private
+router.get('/:id', protect, asyncHandler(getOrder));
 
 // @desc Create new order
 // @route POST /api/orders

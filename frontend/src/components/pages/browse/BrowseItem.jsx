@@ -41,7 +41,7 @@ const BrowseItem = ({ product }) => {
               <DirectionsRunIcon /> <span>Fast Delivery</span>
             </div>
             <div>
-              <EmojiEmotionsIcon /> <span>15% Taxes</span>
+              <EmojiEmotionsIcon /> <span>15% Tax</span>
             </div>
           </div>
         </Link>

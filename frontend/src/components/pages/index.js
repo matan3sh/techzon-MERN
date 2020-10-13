@@ -8,3 +8,4 @@ export { default as Profile } from './profile/Profile';
 export { default as Shipping } from './shipping/Shipping';
 export { default as Payment } from './payment/Payment';
 export { default as PlaceOrder } from './place-order/PlaceOrder';
+export { default as OrderDetail } from './order-detail/OrderDetail';

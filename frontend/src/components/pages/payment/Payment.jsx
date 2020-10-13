@@ -36,9 +36,9 @@ const Payment = ({ history, savePaymentMethod, shippingAddress }) => {
               onChange={(e) => setPaymentMethod(e.target.value)}
             >
               <FormControlLabel
-                value='Paypal'
+                value='PayPal'
                 control={<Radio />}
-                label='Paypal or Credit Card'
+                label='PayPal or Credit Card'
               />
               <FormControlLabel
                 value='Stripe'

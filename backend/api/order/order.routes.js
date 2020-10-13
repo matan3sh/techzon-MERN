@@ -1,7 +1,12 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { protect } = require('../../middleware/auth');
-const { getOrders, getOrder, addOrder } = require('./order.controller');
+const {
+  getOrders,
+  getOrder,
+  addOrder,
+  updateOrderToPaid,
+} = require('./order.controller');
 
 const router = express.Router();
 
@@ -19,5 +24,10 @@ router.get('/:id', protect, asyncHandler(getOrder));
 // @route POST /api/orders
 // @access Private
 router.post('/', protect, asyncHandler(addOrder));
+
+// @desc Update order to paid
+// @route PUT /api/orders/:id/pay
+// @access Private
+router.put('/:id/pay', protect, asyncHandler(updateOrderToPaid));
 
 module.exports = router;

@@ -4,7 +4,7 @@ const OrderDetailSummary = ({ orderDetails }) => {
   const addDecimals = (num) => (Math.round(num * 100) / 100).toFixed(2);
 
   const itemsPrice = addDecimals(
-    orderDetails.orderItems.reduce(
+    orderDetails?.orderItems.reduce(
       (acc, item) => acc + item.quantity * item.price,
       0
     )
@@ -17,13 +17,13 @@ const OrderDetailSummary = ({ orderDetails }) => {
           Products: <span>${itemsPrice}</span>
         </p>
         <p>
-          Shipping: <span>${orderDetails.shippingPrice}</span>
+          Shipping: <span>${orderDetails?.shippingPrice}</span>
         </p>
         <p>
-          Tax: <span>${orderDetails.taxPrice}</span>
+          Tax: <span>${orderDetails?.taxPrice}</span>
         </p>
         <p>
-          Total: <span>${orderDetails.totalPrice}</span>
+          Total: <span>${orderDetails?.totalPrice}</span>
         </p>
       </div>
     </div>

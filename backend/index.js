@@ -18,6 +18,8 @@ const userRoutes = require('./api/user/user.routes');
 app.use('/api/users', userRoutes);
 const orderRoutes = require('./api/order/order.routes');
 app.use('/api/orders', orderRoutes);
+const paypalRoutes = require('./api/paypal/paypal.routes');
+app.use('/api/config', paypalRoutes);
 
 // Middleware
 app.use(notFound);

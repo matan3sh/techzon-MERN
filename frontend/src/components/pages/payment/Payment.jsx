@@ -13,7 +13,7 @@ import CheckoutSteps from '../shipping/CheckoutSteps';
 const Payment = ({ history, savePaymentMethod, shippingAddress }) => {
   if (!shippingAddress) history.push('/shipping');
 
-  const [paymentMethod, setPaymentMethod] = useState('Paypal');
+  const [paymentMethod, setPaymentMethod] = useState('PayPal');
 
   const onSubmit = (e) => {
     e.preventDefault();

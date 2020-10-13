@@ -20,7 +20,7 @@ const Shipping = ({ history, saveShippongAddress, shippingAddress }) => {
     <div className='shipping'>
       <div className='shipping__container'>
         <CheckoutSteps step1 step2 />
-        <h1>Sipping Details</h1>
+        <h1>Shipping Details</h1>
         <form onSubmit={onSubmit}>
           <h5>Address</h5>
           <input

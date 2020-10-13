@@ -12,6 +12,7 @@ import {
   Profile,
   Shipping,
   Payment,
+  PlaceOrder,
 } from 'components/pages';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route exact path='/placeorder' component={PlaceOrder} />
         <Route exact path='/payment' component={Payment} />
         <Route exact path='/shipping' component={Shipping} />
         <Route exact path='/profile' component={Profile} />

@@ -6,6 +6,7 @@ import {
   StarBorderIcon,
   LocalShippingIcon,
   DirectionsRunIcon,
+  EmojiEmotionsIcon,
 } from 'components/icons';
 
 const BrowseItem = ({ product }) => {
@@ -38,6 +39,9 @@ const BrowseItem = ({ product }) => {
             </div>
             <div>
               <DirectionsRunIcon /> <span>Fast Delivery</span>
+            </div>
+            <div>
+              <EmojiEmotionsIcon /> <span>No Taxes</span>
             </div>
           </div>
         </Link>

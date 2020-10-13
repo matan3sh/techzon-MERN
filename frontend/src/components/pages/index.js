@@ -7,3 +7,4 @@ export { default as ProductDetail } from './product-detail/ProductDetail';
 export { default as Profile } from './profile/Profile';
 export { default as Shipping } from './shipping/Shipping';
 export { default as Payment } from './payment/Payment';
+export { default as PlaceOrder } from './place-order/PlaceOrder';

@@ -9,7 +9,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <div>
         {step1 ? (
           <Link to='/signin'>
-            <Button variant='outlined' color='dark'>
+            <Button variant='outlined' color='default'>
               Signin
             </Button>
           </Link>
@@ -22,7 +22,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <div>
         {step2 ? (
           <Link to='/shipping'>
-            <Button variant='outlined' color='dark'>
+            <Button variant='outlined' color='default'>
               Shipping
             </Button>
           </Link>
@@ -35,7 +35,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <div>
         {step3 ? (
           <Link to='/payment'>
-            <Button variant='outlined' color='dark'>
+            <Button variant='outlined' color='default'>
               Payment
             </Button>
           </Link>
@@ -48,7 +48,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <div>
         {step4 ? (
           <Link to='/placeorder'>
-            <Button variant='outlined' color='dark'>
+            <Button variant='outlined' color='default'>
               Place Order
             </Button>
           </Link>

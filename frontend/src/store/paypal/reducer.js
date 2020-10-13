@@ -25,7 +25,9 @@ export default function reducer(state = initialState, action) {
     case 'ORDER_PAY_RESET':
       return {
         ...state,
-        loading: false,
+        loading: null,
+        error: null,
+        success: false,
       };
     default:
       return state;

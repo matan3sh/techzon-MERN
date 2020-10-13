@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { PayPalButton } from 'react-paypal-button-v2';
 import { connect } from 'react-redux';
+
 import { getOrderDetails } from 'store/order/actions';
 import { payOrder, payReset } from 'store/paypal/actions';
 
+import { PayPalButton } from 'react-paypal-button-v2';
 import { Spinner, Error } from 'components/shared';
 import OrderDetailList from './OrderDetailList';
 import OrderDetailShipping from './OrderDetailShipping';
@@ -13,6 +14,8 @@ import OrderDetailSummary from './OrderDetailSummary';
 
 const OrderDetail = ({
   match,
+  history,
+  user,
   getOrderDetails,
   orderDetails,
   error,
@@ -25,6 +28,9 @@ const OrderDetail = ({
   const orderId = match.params.id;
 
   useEffect(() => {
+    if (!user) {
+      history.push('/signin');
+    }
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal');
       const script = document.createElement('script');
@@ -34,15 +40,15 @@ const OrderDetail = ({
       script.onload = () => setSdkReady(true);
       document.body.appendChild(script);
     };
-    if (!orderDetails || orderDetails._id !== orderId) getOrderDetails(orderId);
-    if (!orderDetails || paySuccess) {
+    if (!orderDetails || paySuccess || orderDetails._id !== orderId) {
       payReset();
       getOrderDetails(orderId);
     } else if (!orderDetails.isPaid) {
       if (!window.paypal) addPayPalScript();
       else setSdkReady(true);
     }
-  }, [orderDetails, orderId, getOrderDetails, paySuccess]);
+    // eslint-disable-next-line
+  }, [orderDetails]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -97,6 +103,7 @@ const mapStateToProps = (state) => ({
   error: state.orderApp.error,
   paySuccess: state.paypalApp.success,
   payLoading: state.paypalApp.loading,
+  user: state.userApp.user,
 });
 const mapDispatchToProps = {
   getOrderDetails,

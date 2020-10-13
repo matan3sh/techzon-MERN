@@ -4,6 +4,11 @@
   align-items: center;
   margin: auto;
   height: 82vh;
+
+  hr {
+    margin-top: 10px;
+    opacity: 0.3;
+  }
 }
 
 .placeOrder__container {
@@ -35,6 +40,15 @@
     span {
       margin-left: 20px;
       font-family: Lato-Bold;
+    }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 5px;
     }
   }
 }

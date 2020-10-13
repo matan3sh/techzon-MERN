@@ -1,6 +1,4 @@
-const userFromStorage = localStorage.getItem('userInfo')
-  ? JSON.parse(localStorage.getItem('userInfo'))
-  : null;
+import { userFromStorage } from 'services/localStorageService';
 
 const initialState = {
   user: userFromStorage,

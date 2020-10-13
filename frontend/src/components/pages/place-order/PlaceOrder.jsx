@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { createOrder } from 'store/order/actions';
 
+import { PaymentIcon, ContactMailIcon } from 'components/icons';
 import { Error } from 'components/shared';
 import CheckoutSteps from '../shipping/CheckoutSteps';
 import PlaceOrderList from './PlaceOrderList';
 
-const PlaceOrder = ({ cartItems, shippingAddress, paymentMethod, cart }) => {
+const PlaceOrder = ({
+  cartItems,
+  shippingAddress,
+  paymentMethod,
+  cart,
+  createOrder,
+  order,
+  success,
+  error,
+  history,
+}) => {
   const addDecimals = (num) => (Math.round(num * 100) / 100).toFixed(2);
 
   cart.itemsPrice = addDecimals(
@@ -17,8 +29,21 @@ const PlaceOrder = ({ cartItems, shippingAddress, paymentMethod, cart }) => {
     Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)
   );
 
+  useEffect(() => {
+    if (success) history.push(`/order/${order._id}`);
+    // eslint-disable-next-line
+  }, [history, success]);
+
   const onPlaceOrder = () => {
-    console.log('Order');
+    createOrder({
+      orderItems: cartItems,
+      shippingAddress,
+      paymentMethod,
+      itemsPrice: cart.itemsPrice,
+      shippingPrice: cart.shippingPrice,
+      taxPrice: cart.taxPrice,
+      totalPrice: cart.totalPrice,
+    });
   };
 
   return (
@@ -27,11 +52,18 @@ const PlaceOrder = ({ cartItems, shippingAddress, paymentMethod, cart }) => {
         <CheckoutSteps step1 step2 step3 step4 />
         <h2>Shipping Address:</h2>
         <span>
-          {shippingAddress.address}, {shippingAddress.city}{' '}
-          {shippingAddress.postalCode}, {shippingAddress.country}
+          <ContactMailIcon />
+          <small>
+            {shippingAddress.address}, {shippingAddress.city}{' '}
+            {shippingAddress.postalCode}, {shippingAddress.country}
+          </small>
         </span>
+        <hr />
         <h2>Payment Method</h2>
-        <span>{paymentMethod}</span>
+        <span>
+          <PaymentIcon /> <small>{paymentMethod}</small>
+        </span>
+        <hr />
         <h2>Ordered Items</h2>
         {!cartItems.length ? (
           <Error error='Your cart is empty' />
@@ -51,6 +83,7 @@ const PlaceOrder = ({ cartItems, shippingAddress, paymentMethod, cart }) => {
             </div>
           </>
         )}
+        {error && <Error error={error} />}
         <button
           type='button'
           className='auth__signInButton'
@@ -68,7 +101,12 @@ const mapStateToProps = (state) => ({
   shippingAddress: state.cartApp.shippingAddress,
   paymentMethod: state.cartApp.paymentMethod,
   cart: state.cartApp,
+  order: state.orderApp.order,
+  success: state.orderApp.success,
+  error: state.orderApp.error,
 });
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  createOrder,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

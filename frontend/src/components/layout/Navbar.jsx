@@ -15,7 +15,7 @@ import logo from 'assets/img/logo.png';
 import Sidenav from './Sidenav';
 import Dropdown from './Dropdown';
 
-const Navbar = ({ cartItems, user, logoutUser }) => {
+const Navbar = ({ cartItems, user, logoutUser, cart }) => {
   const [openSidenav, setOpenSidenav] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -23,6 +23,10 @@ const Navbar = ({ cartItems, user, logoutUser }) => {
   const onClose = () => setOpenSidenav(false);
 
   const onLogout = () => logoutUser();
+
+  cart.itemsLength = Number(
+    cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  );
 
   return (
     <>
@@ -66,11 +70,7 @@ const Navbar = ({ cartItems, user, logoutUser }) => {
           <Link to='/cart' className='navbar__link'>
             <div className='navbar__option-icons'>
               <div className='navbar__option-cart-number'>
-                <span>
-                  {Number(
-                    cartItems.reduce((acc, item) => acc + item.quantity, 0)
-                  )}
-                </span>
+                <span>{cart.itemsLength}</span>
               </div>
               <AddShoppingCartIcon className='navbar__option-cart-icon' />
               <span className='navbar__option-cart'>Cart</span>
@@ -89,6 +89,7 @@ const Navbar = ({ cartItems, user, logoutUser }) => {
 const mapStateToProps = (state) => ({
   cartItems: state.cartApp.cartItems,
   user: state.userApp.user,
+  cart: state.cartApp,
 });
 
 const mapDispatchToProps = {

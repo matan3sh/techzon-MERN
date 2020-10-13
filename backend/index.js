@@ -16,6 +16,8 @@ const productRoutes = require('./api/product/product.routes');
 app.use('/api/products', productRoutes);
 const userRoutes = require('./api/user/user.routes');
 app.use('/api/users', userRoutes);
+const orderRoutes = require('./api/order/order.routes');
+app.use('/api/orders', orderRoutes);
 
 // Middleware
 app.use(notFound);

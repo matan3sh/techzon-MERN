@@ -16,3 +16,5 @@ export { default as ExitToAppIcon } from '@material-ui/icons/ExitToApp';
 export { default as PersonIcon } from '@material-ui/icons/Person';
 export { default as ArrowDropDownIcon } from '@material-ui/icons/ArrowDropDown';
 export { default as EmojiEmotionsIcon } from '@material-ui/icons/EmojiEmotions';
+export { default as PaymentIcon } from '@material-ui/icons/Payment';
+export { default as ContactMailIcon } from '@material-ui/icons/ContactMail';

@@ -31,6 +31,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: {},
+        profile: {},
       };
     case 'USER_DETAILS_REQUEST':
       return {

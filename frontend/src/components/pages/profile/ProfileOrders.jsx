@@ -34,25 +34,29 @@ const ProfileOrders = ({ userOrders, error }) => {
     <div className='auth__container profile-right'>
       <h1>My Orders</h1>
       {error && <Error error={error} />}
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label='customized table'>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>CONFIRM ID</StyledTableCell>
-              <StyledTableCell align='center'>DATE</StyledTableCell>
-              <StyledTableCell align='right'>TOTAL</StyledTableCell>
-              <StyledTableCell align='right'>PAID</StyledTableCell>
-              <StyledTableCell align='right'>DELIVERED</StyledTableCell>
-              <StyledTableCell align='right'></StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {userOrders.map((item, index) => (
-              <ProfileOrdersItem item={item} key={index} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {userOrders.length === 0 ? (
+        <Error error='You dont have orders' />
+      ) : (
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label='customized table'>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>CONFIRM ID</StyledTableCell>
+                <StyledTableCell align='center'>DATE</StyledTableCell>
+                <StyledTableCell align='center'>TOTAL</StyledTableCell>
+                <StyledTableCell align='center'>PAID</StyledTableCell>
+                <StyledTableCell align='center'>DELIVERED</StyledTableCell>
+                <StyledTableCell align='center'></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userOrders.map((item, index) => (
+                <ProfileOrdersItem item={item} key={index} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };

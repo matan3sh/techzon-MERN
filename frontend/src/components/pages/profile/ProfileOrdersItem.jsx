@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
+import { ReportProblemIcon, LocalShippingIcon } from 'components/icons';
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -32,14 +34,22 @@ const ProfileOrdersItem = ({ item }) => {
       <StyledTableCell align='center'>
         <Moment format='LL'>{item.createdAt}</Moment>
       </StyledTableCell>
-      <StyledTableCell align='right'>${item.totalPrice}</StyledTableCell>
-      <StyledTableCell align='right'>
-        {item.isPaid ? 'Paid' : 'Not Paid'}
+      <StyledTableCell align='center'>${item.totalPrice}</StyledTableCell>
+      <StyledTableCell align='center'>
+        {item.isPaid ? (
+          <Moment format='LL'>{item.paidAt}</Moment>
+        ) : (
+          <ReportProblemIcon style={{ color: '#8b0000' }} />
+        )}
       </StyledTableCell>
-      <StyledTableCell align='right'>
-        {item.isDelivered ? 'Delivered' : 'Not Delivered'}
+      <StyledTableCell align='center'>
+        {item.isDelivered ? (
+          <Moment format='LLL'>{item.deliveredAt}</Moment>
+        ) : (
+          <LocalShippingIcon style={{ color: '#8b0000' }} />
+        )}
       </StyledTableCell>
-      <StyledTableCell align='right'>
+      <StyledTableCell align='center'>
         <button
           onClick={() => history.push(`/order/${item._id}`)}
           className='button'

@@ -16,6 +16,8 @@ import {
   OrderDetail,
   UserList,
   UserEdit,
+  ProductList,
+  ProductEdit,
 } from 'components/pages';
 
 function App() {
@@ -32,7 +34,9 @@ function App() {
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/order/:id' component={OrderDetail} />
         <Route exact path='/cart/:id?' component={Cart} />
+        <Route exact path='/admin/product/:id/edit' component={ProductEdit} />
         <Route exact path='/admin/user/:id/edit' component={UserEdit} />
+        <Route exact path='/admin/productlist' component={ProductList} />
         <Route exact path='/admin/userlist' component={UserList} />
         <Route exact path='/:id' component={ProductDetail} />
         <Route exact path='/' component={Home} />

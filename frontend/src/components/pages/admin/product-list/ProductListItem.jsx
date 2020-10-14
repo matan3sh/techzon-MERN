@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { CheckCircleIcon, ErrorIcon } from 'components/icons';
-
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -27,24 +25,17 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const UserListItem = ({ user, onDelete, history }) => {
+const ProductListItem = ({ product, onDelete, history }) => {
   return (
-    <StyledTableRow key={user.email}>
-      <StyledTableCell align='left'>{user._id}</StyledTableCell>
-      <StyledTableCell align='center'>{user.name}</StyledTableCell>
-      <StyledTableCell align='center'>
-        <a href={`mailto:${user.email}`}>{user.email}</a>
-      </StyledTableCell>
-      <StyledTableCell align='center'>
-        {user.isAdmin ? (
-          <CheckCircleIcon className='check' />
-        ) : (
-          <ErrorIcon className='uncheck' />
-        )}
-      </StyledTableCell>
+    <StyledTableRow key={product.title}>
+      <StyledTableCell align='left'>{product._id}</StyledTableCell>
+      <StyledTableCell align='center'>{product.title}</StyledTableCell>
+      <StyledTableCell align='center'>{product.price}</StyledTableCell>
+      <StyledTableCell align='center'>{product.category}</StyledTableCell>
+      <StyledTableCell align='center'>{product.brand}</StyledTableCell>
       <StyledTableCell align='center'>
         <IconButton
-          onClick={() => history.push(`/admin/user/${user._id}/edit`)}
+          onClick={() => history.push(`/admin/product/${product._id}/edit`)}
           color='default'
           aria-label='edit product'
           component='span'
@@ -52,7 +43,7 @@ const UserListItem = ({ user, onDelete, history }) => {
           <EditIcon />
         </IconButton>
         <IconButton
-          onClick={() => onDelete(user._id)}
+          onClick={() => onDelete(product._id)}
           color='default'
           aria-label='delete product'
           component='span'
@@ -64,4 +55,4 @@ const UserListItem = ({ user, onDelete, history }) => {
   );
 };
 
-export default UserListItem;
+export default ProductListItem;

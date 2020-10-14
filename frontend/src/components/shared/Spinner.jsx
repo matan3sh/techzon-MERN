@@ -20,7 +20,7 @@ const Spinner = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CircularProgress color='default' />
+      <CircularProgress />
     </div>
   );
 };

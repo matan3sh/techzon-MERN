@@ -44,3 +44,46 @@
     cursor: pointer;
   }
 }
+
+.admin__header {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    height: 40px;
+    padding: 0 10px;
+    background-color: $main-color;
+    color: #fff;
+    border: 1px $main-color solid;
+    border-radius: 5px;
+    transition: color 0.2s ease-in;
+    font-family: Roboto-Bold;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 18px;
+      position: relative;
+      bottom: 1px;
+    }
+
+    &:hover {
+      background-color: $second-color;
+      color: $main-color;
+      border: 1px $second-color solid;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .admin__userList {
+    margin: 2rem 5rem;
+  }
+}
+
+@media screen and (max-width: 877px) {
+  .admin__userList {
+    margin: 2rem 1rem;
+  }
+}

@@ -11,3 +11,5 @@ export { default as PlaceOrder } from './place-order/PlaceOrder';
 export { default as OrderDetail } from './order-detail/OrderDetail';
 export { default as UserList } from './admin/user-list/UserList';
 export { default as UserEdit } from './admin/user-edit/UserEdit';
+export { default as ProductList } from './admin/product-list/ProductList';
+export { default as ProductEdit } from './admin/product-edit/ProductEdit';

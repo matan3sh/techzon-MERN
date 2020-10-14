@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadProducts } from 'store/product/actions';
+import { deleteProduct } from 'store/product-delete/actions';
 
 import { Spinner, Error } from 'components/shared';
 import { AddIcon } from 'components/icons';
@@ -32,26 +33,29 @@ const useStyles = makeStyles({
 });
 
 const ProductList = ({
-  match,
   history,
   loadProducts,
   loading,
   error,
   products,
   user,
+  deleteProduct,
+  successDelete,
+  loadingDelete,
+  errorDelete,
 }) => {
   const classes = useStyles();
 
   useEffect(() => {
     if (user && user.isAdmin) loadProducts();
     else history.push('/signin');
-  }, [user, history, loadProducts]);
+  }, [user, history, loadProducts, successDelete]);
 
   const onDelete = (id) => {
     const isConfirm = window.confirm(
       'Are you sure you want to delete this product?'
     );
-    if (isConfirm) console.log(id);
+    if (isConfirm) deleteProduct(id);
   };
 
   return (
@@ -65,7 +69,8 @@ const ProductList = ({
           <AddIcon />
         </button>
       </div>
-      {loading ? (
+      {errorDelete && <Error error={errorDelete} />}
+      {loading || loadingDelete ? (
         <Spinner />
       ) : error ? (
         <Error error={error} />
@@ -104,9 +109,13 @@ const mapStateToProps = (state) => ({
   products: state.mainApp.products,
   loading: state.mainApp.loading,
   error: state.mainApp.error,
+  successDelete: state.productDeleteApp.success,
+  loadingDelete: state.productDeleteApp.loading,
+  errorDelete: state.productDeleteApp.error,
 });
 const mapDispatchToProps = {
   loadProducts,
+  deleteProduct,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

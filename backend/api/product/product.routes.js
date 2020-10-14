@@ -1,6 +1,11 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { getProducts, getProduct } = require('./product.controller');
+const {
+  getProducts,
+  getProduct,
+  deleteProduct,
+} = require('./product.controller');
+const { protect, isAdmin } = require('../../middleware/auth');
 
 const router = express.Router();
 
@@ -13,5 +18,10 @@ router.get('/', asyncHandler(getProducts));
 // @route GET /api/products/:id
 // @access Public
 router.get('/:id', asyncHandler(getProduct));
+
+// @desc Delete single product by id
+// @route DELETE /api/products/:id
+// @access Private/Admin
+router.delete('/:id', protect, isAdmin, asyncHandler(deleteProduct));
 
 module.exports = router;

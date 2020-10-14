@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserList } from 'store/user-list/actions';
-import { deleteUser } from 'store/user-delete/action';
+import { deleteUser } from 'store/user-delete/actions';
 
 import { Spinner, Error } from 'components/shared';
 import UserListItem from './UserListItem';

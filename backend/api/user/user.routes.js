@@ -7,6 +7,8 @@ const {
   register,
   getUsers,
   deleteUser,
+  updateUser,
+  getUser,
 } = require('./user.controller');
 const { protect, isAdmin } = require('../../middleware/auth');
 
@@ -37,9 +39,19 @@ router.post('/register', asyncHandler(register));
 // @access Private/Admin
 router.get('/', protect, isAdmin, asyncHandler(getUsers));
 
+// @desc Get single user by id
+// @route GET /api/users/:id
+// @access Private/Admin
+router.get('/:id', protect, isAdmin, asyncHandler(getUser));
+
 // @desc Delete user
-// @route DELETE /api/users
+// @route DELETE /api/users/:id
 // @access Private/Admin
 router.delete('/:id', protect, isAdmin, asyncHandler(deleteUser));
+
+// @desc Update user
+// @route PUT /api/users/:id
+// @access Private/Admin
+router.put('/:id', protect, isAdmin, asyncHandler(updateUser));
 
 module.exports = router;

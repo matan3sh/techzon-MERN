@@ -68,6 +68,7 @@ const Profile = ({
               error={error}
               message={message}
               success={success}
+              user={user}
             />
             <ProfileOrders userOrders={userOrders} error={userOrdersError} />
           </div>

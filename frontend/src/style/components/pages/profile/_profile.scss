@@ -4,10 +4,25 @@
   align-items: center;
   margin: 2rem 10rem;
   height: 100%;
+  h1 {
+    font-size: 22px;
+  }
 }
 
 .profile-left {
   flex: 0.2;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      position: relative;
+      bottom: 5px;
+      font-size: 12px;
+    }
+  }
 }
 
 .profile-right {
@@ -17,13 +32,13 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1595px) {
   .profile {
     margin: 2rem 5rem;
   }
 }
 
-@media screen and (max-width: 1310px) {
+@media screen and (max-width: 1443px) {
   .profile {
     margin: 2rem 2.5rem;
   }
@@ -32,7 +47,7 @@
   }
 }
 
-@media screen and (max-width: 1230px) {
+@media screen and (max-width: 1325px) {
   .profile {
     margin: 2rem 0.5rem;
   }

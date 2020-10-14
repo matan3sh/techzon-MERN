@@ -1,0 +1,19 @@
+.admin__userList {
+  margin: 2rem 10rem;
+  h1 {
+    margin-bottom: 1rem;
+    margin-left: 5px;
+  }
+}
+
+.admin__userList button:last-child {
+  margin-left: 15px;
+}
+
+.check {
+  color: #357a38 !important;
+}
+
+.uncheck {
+  color: #ab003c !important;
+}

@@ -20,6 +20,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
         user: action.payload,
+        error: null,
       };
     case 'USER_AUTH_FAIL':
       return {

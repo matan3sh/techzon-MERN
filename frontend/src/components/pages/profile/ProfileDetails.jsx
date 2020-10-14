@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Error, Success } from 'components/shared';
+import AdminMenu from '../admin/admin-menu/AdminMenu';
 
 const ProfileDetails = ({
   name,
@@ -15,10 +16,14 @@ const ProfileDetails = ({
   error,
   message,
   success,
+  user,
 }) => {
   return (
     <div className='auth__container profile-left'>
-      <h1>Profile Details</h1>
+      <div>
+        <h1>Profile Details</h1>
+        {user?.isAdmin && <AdminMenu />}
+      </div>
       {error && <Error error={error} />}
       {message && <Error error={message} />}
       {success && <Success msg='Update Successful' />}

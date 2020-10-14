@@ -1,34 +1,27 @@
 const initialState = {
   loading: null,
   error: null,
-  success: false,
+  userOrders: [],
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'ORDER_PAY_REQUEST':
+    case 'USER_ORDERS_REQUEST':
       return {
         ...state,
         loading: true,
       };
-    case 'ORDER_PAY_SUCCESS':
+    case 'USER_ORDERS_SUCCESS':
       return {
         ...state,
         loading: false,
-        success: true,
+        userOrders: action.payload,
       };
-    case 'ORDER_PAY_FAIL':
+    case 'USER_ORDERS_FAIL':
       return {
         ...state,
         loading: false,
         error: action.payload,
-      };
-    case 'ORDER_PAY_RESET':
-      return {
-        ...state,
-        loading: null,
-        error: null,
-        success: false,
       };
     default:
       return state;

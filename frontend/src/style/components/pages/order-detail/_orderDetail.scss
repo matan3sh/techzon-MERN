@@ -85,7 +85,7 @@
 }
 
 .orderDetail__right-container {
-  margin-top: 2.5rem;
+  margin-top: 4.5rem;
 }
 
 .b-bottom {
@@ -102,6 +102,16 @@
     span {
       font-family: Lato;
     }
+  }
+}
+
+.orderDetail_nav {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -132,6 +142,9 @@
 @media screen and (max-width: 1185px) {
   .orderDetail {
     grid-template-columns: 1fr;
+  }
+  .orderDetail__right-container {
+    margin-top: 1rem;
   }
 }
 

@@ -1,8 +1,12 @@
-const order = require('../../models/order');
 const Order = require('../../models/order');
 
 getOrders = async (req, res) => {
   const orders = await Order.find({});
+  res.json(orders);
+};
+
+getUserOrders = async (req, res) => {
+  const orders = await Order.find({ user: req.user._id });
   res.json(orders);
 };
 
@@ -68,6 +72,7 @@ updateOrderToPaid = async (req, res) => {
 
 module.exports = {
   getOrders,
+  getUserOrders,
   getOrder,
   addOrder,
   updateOrderToPaid,

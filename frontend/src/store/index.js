@@ -7,6 +7,7 @@ import cartReducer from './cart/reducer';
 import userReducer from './user/reducer';
 import orderReducer from './order/reducer';
 import paypalReducer from './paypal/reducer';
+import userOrdersReducer from './user-orders/reducer';
 
 const rootReducer = combineReducers({
   mainApp: productReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   userApp: userReducer,
   orderApp: orderReducer,
   paypalApp: paypalReducer,
+  userOrdersApp: userOrdersReducer,
 });
 
 const store = createStore(

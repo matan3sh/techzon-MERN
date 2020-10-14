@@ -64,6 +64,12 @@ const OrderDetail = ({
       ) : (
         <div className='orderDetail'>
           <div className='orderDetail__left'>
+            <p
+              className='orderDetail_nav'
+              onClick={() => history.push('/profile')}
+            >
+              &#8592; Back to Profile
+            </p>
             <h2>CONFIRM ID {orderDetails._id}</h2>
             <div className='orderDetail__left-container'>
               <OrderDetailShipping orderDetails={orderDetails} />

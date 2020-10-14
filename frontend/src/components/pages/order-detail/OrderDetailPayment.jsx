@@ -1,5 +1,5 @@
 import React from 'react';
-
+import moment from 'moment';
 import { Success, Error } from 'components/shared';
 
 const OrderDetailPayment = ({ orderDetails }) => {
@@ -11,7 +11,9 @@ const OrderDetailPayment = ({ orderDetails }) => {
           Method: <span>{orderDetails?.paymentMethod}</span>
         </p>
         {orderDetails.isPaid ? (
-          <Success msg={`Paid on ${orderDetails.paidAt}`} />
+          <Success
+            msg={`Paid on ${moment(orderDetails.paidAt).format('LL')}`}
+          />
         ) : (
           <Error error='Not Paid' />
         )}

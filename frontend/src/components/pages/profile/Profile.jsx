@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserProfile, updateUserProfile } from 'store/user/actions';
+import { getUserOrders } from 'store/user-orders/action';
 
 import { Spinner } from 'components/shared';
 import ProfileOrders from './ProfileOrders';
@@ -15,6 +16,10 @@ const Profile = ({
   getUserProfile,
   updateUserProfile,
   success,
+  getUserOrders,
+  userOrders,
+  userOrdersLoading,
+  userOrdersError,
 }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,13 +32,15 @@ const Profile = ({
     if (!user) {
       history.push('/signin');
     } else {
-      if (!profile.name) getUserProfile('profile');
-      else {
+      if (!profile.name) {
+        getUserProfile('profile');
+        getUserOrders();
+      } else {
         setName(profile.name);
         setEmail(profile.email);
       }
     }
-  }, [user, history, profile, getUserProfile]);
+  }, [user, history, profile, getUserProfile, getUserOrders]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +50,7 @@ const Profile = ({
 
   return (
     <>
-      {loading ? (
+      {loading || userOrdersLoading ? (
         <Spinner />
       ) : (
         <>
@@ -62,7 +69,7 @@ const Profile = ({
               message={message}
               success={success}
             />
-            <ProfileOrders />
+            <ProfileOrders userOrders={userOrders} error={userOrdersError} />
           </div>
         </>
       )}
@@ -76,11 +83,15 @@ const mapStateToProps = (state) => ({
   error: state.userApp.error,
   loading: state.userApp.loading,
   success: state.userApp.success,
+  userOrdersError: state.userOrdersApp.error,
+  userOrdersLoading: state.userOrdersApp.loading,
+  userOrders: state.userOrdersApp.userOrders,
 });
 
 const mapDispatchToProps = {
   getUserProfile,
   updateUserProfile,
+  getUserOrders,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

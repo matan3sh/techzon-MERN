@@ -30,7 +30,7 @@ const ProductListItem = ({ product, onDelete, history }) => {
     <StyledTableRow key={product.title}>
       <StyledTableCell align='left'>{product._id}</StyledTableCell>
       <StyledTableCell align='center'>{product.title}</StyledTableCell>
-      <StyledTableCell align='center'>{product.price}</StyledTableCell>
+      <StyledTableCell align='center'>${product.price}</StyledTableCell>
       <StyledTableCell align='center'>{product.category}</StyledTableCell>
       <StyledTableCell align='center'>{product.brand}</StyledTableCell>
       <StyledTableCell align='center'>

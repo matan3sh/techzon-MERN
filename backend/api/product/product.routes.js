@@ -4,6 +4,8 @@ const {
   getProducts,
   getProduct,
   deleteProduct,
+  addProduct,
+  updateProduct,
 } = require('./product.controller');
 const { protect, isAdmin } = require('../../middleware/auth');
 
@@ -14,6 +16,11 @@ const router = express.Router();
 // @access Public
 router.get('/', asyncHandler(getProducts));
 
+// @desc Create a product
+// @route POST /api/products
+// @access Private/Admin
+router.post('/', protect, isAdmin, asyncHandler(addProduct));
+
 // @desc Fetch single product
 // @route GET /api/products/:id
 // @access Public
@@ -23,5 +30,10 @@ router.get('/:id', asyncHandler(getProduct));
 // @route DELETE /api/products/:id
 // @access Private/Admin
 router.delete('/:id', protect, isAdmin, asyncHandler(deleteProduct));
+
+// @desc Update single product by id
+// @route PUT /api/products/:id
+// @access Private/Admin
+router.put('/:id', protect, isAdmin, asyncHandler(updateProduct));
 
 module.exports = router;

@@ -5,8 +5,9 @@ const {
   getUserProfile,
   updateUserProfile,
   register,
+  getUsers,
 } = require('./user.controller');
-const { protect } = require('../../middleware/auth');
+const { protect, isAdmin } = require('../../middleware/auth');
 
 const router = express.Router();
 
@@ -29,5 +30,10 @@ router.put('/profile', protect, asyncHandler(updateUserProfile));
 // @route POST /api/users/register
 // @access Public
 router.post('/register', asyncHandler(register));
+
+// @desc Get all users
+// @route GET /api/users
+// @access Private/Admin
+router.get('/', protect, isAdmin, asyncHandler(getUsers));
 
 module.exports = router;

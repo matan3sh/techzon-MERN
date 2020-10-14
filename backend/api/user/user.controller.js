@@ -77,9 +77,15 @@ register = async (req, res) => {
   }
 };
 
+getUsers = async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+};
+
 module.exports = {
   login,
   getUserProfile,
   updateUserProfile,
   register,
+  getUsers,
 };

@@ -15,6 +15,7 @@ import {
   PlaceOrder,
   OrderDetail,
   UserList,
+  UserEdit,
 } from 'components/pages';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/order/:id' component={OrderDetail} />
         <Route exact path='/cart/:id?' component={Cart} />
+        <Route exact path='/admin/user/:id/edit' component={UserEdit} />
         <Route exact path='/admin/userlist' component={UserList} />
         <Route exact path='/:id' component={ProductDetail} />
         <Route exact path='/' component={Home} />

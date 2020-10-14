@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserList } from 'store/user-list/actions';
+import { deleteUser } from 'store/user-delete/action';
 
 import { Spinner, Error } from 'components/shared';
 import UserListItem from './UserListItem';
@@ -30,16 +31,28 @@ const useStyles = makeStyles({
   },
 });
 
-const UserList = ({ history, getUserList, userList, loading, error, user }) => {
+const UserList = ({
+  history,
+  getUserList,
+  userList,
+  loading,
+  error,
+  user,
+  deleteUser,
+  deleteSuccess,
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
     if (user && user.isAdmin) getUserList();
     else history.push('/signin');
-  }, [user, history, getUserList]);
+  }, [user, history, getUserList, deleteSuccess]);
 
   const onDelete = (id) => {
-    console.log('Delete');
+    const isConfirm = window.confirm(
+      'Are you sure you want to delete this user?'
+    );
+    if (isConfirm) deleteUser(id);
   };
 
   return (
@@ -86,9 +99,11 @@ const mapStateToProps = (state) => ({
   loading: state.userListApp.loading,
   error: state.userListApp.error,
   user: state.userApp.user,
+  deleteSuccess: state.userDeleteApp.success,
 });
 const mapDispatchToProps = {
   getUserList,
+  deleteUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

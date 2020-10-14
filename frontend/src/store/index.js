@@ -10,6 +10,7 @@ import paypalReducer from './paypal/reducer';
 import userOrdersReducer from './user-orders/reducer';
 import userListReducer from './user-list/reducer';
 import userDeleteReducer from './user-delete/reducer';
+import userUpdateReducer from './user-update/reducer';
 
 const rootReducer = combineReducers({
   mainApp: productReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   userOrdersApp: userOrdersReducer,
   userListApp: userListReducer,
   userDeleteApp: userDeleteReducer,
+  userUpdateApp: userUpdateReducer,
 });
 
 const store = createStore(

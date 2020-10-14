@@ -17,3 +17,30 @@
 .uncheck {
   color: #ab003c !important;
 }
+
+.center__container {
+  display: flex;
+  margin: 1rem auto;
+  justify-content: center;
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+
+    h5 {
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+.userEdit_nav {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+}

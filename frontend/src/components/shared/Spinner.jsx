@@ -1,12 +1,28 @@
 import React from 'react';
-import spinner from 'assets/img/spinner.gif';
-const Spinner = () => (
-  <img src={spinner} alt='Loading...' style={loaderStyle} />
-);
-const loaderStyle = {
-  objectFit: 'contain',
-  display: 'flex',
-  margin: 'auto',
+
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+    margin: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '50vh',
+  },
+}));
+
+const Spinner = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <CircularProgress color='default' />
+    </div>
+  );
 };
 
 export default Spinner;

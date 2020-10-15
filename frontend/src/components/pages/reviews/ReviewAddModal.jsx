@@ -58,7 +58,12 @@ const ReviewAddModal = ({ open, onClose, user, addReview, productId }) => {
               />
             </div>
           </div>
-          <button className='button'>Submit</button>
+          <button
+            className={`button ${comment === '' && 'disable'}`}
+            disabled={comment === ''}
+          >
+            Submit
+          </button>
         </form>
       </div>
     </Modal>

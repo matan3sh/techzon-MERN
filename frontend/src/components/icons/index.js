@@ -24,3 +24,5 @@ export { default as AddIcon } from '@material-ui/icons/Add';
 export { default as EditIcon } from '@material-ui/icons/Edit';
 export { default as DeleteIcon } from '@material-ui/icons/Delete';
 export { default as InputIcon } from '@material-ui/icons/Input';
+export { default as StarIcon } from '@material-ui/icons/Star';
+export { default as AddCommentIcon } from '@material-ui/icons/AddComment';

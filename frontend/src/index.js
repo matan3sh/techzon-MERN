@@ -6,6 +6,7 @@ import store from './store';
 
 import * as serviceWorker from './serviceWorker';
 import './style/style.css';
+import 'react-responsive-modal/styles.css';
 
 ReactDOM.render(
   <React.StrictMode>

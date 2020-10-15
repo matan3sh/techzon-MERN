@@ -11,6 +11,8 @@ import ProductDetailLeft from './ProductDetailLeft';
 import ProductDetailCenter from './ProductDetailCenter';
 import ProductDetailRight from './ProductDetailRight';
 
+import ReviewsList from '../reviews/ReviewsList';
+
 const ProductDetail = ({
   match,
   loadProduct,
@@ -18,6 +20,8 @@ const ProductDetail = ({
   product,
   loading,
   error,
+  reviewAddSuccess,
+  user,
 }) => {
   const history = useHistory();
   useEffect(() => {
@@ -27,7 +31,7 @@ const ProductDetail = ({
       clearProduct();
     };
     // eslint-disable-next-line
-  }, [loadProduct]);
+  }, [loadProduct, reviewAddSuccess]);
 
   const onAddToCart = (quantity) => {
     history.push(`/cart/${match.params.id}?qty=${quantity}`);
@@ -48,6 +52,7 @@ const ProductDetail = ({
             <ProductDetailCenter product={product} />
             <ProductDetailRight product={product} onAddToCart={onAddToCart} />
           </div>
+          <ReviewsList product={product} user={user} />
         </>
       )}
     </>
@@ -58,6 +63,8 @@ const mapStateToProps = (state) => ({
   product: state.mainApp.product,
   loading: state.mainApp.loading,
   error: state.mainApp.error,
+  reviewAddSuccess: state.reviewAddApp.success,
+  user: state.userApp.user,
 });
 
 const mapDispatchToProps = {

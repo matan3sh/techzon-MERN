@@ -1,7 +1,7 @@
 import axios from 'axios';
 const PATH = '/api/products';
 
-export const updateProduct = (productData) => async (dispatch, getState) => {
+export const addReview = (productId, review) => async (dispatch, getState) => {
   const {
     userApp: { user },
   } = getState();
@@ -12,16 +12,12 @@ export const updateProduct = (productData) => async (dispatch, getState) => {
     },
   };
   try {
-    dispatch({ type: 'PRODUCT_UPDATE_REQUEST' });
-    const { data } = await axios.put(
-      `${PATH}/${productData._id}`,
-      productData,
-      config
-    );
-    dispatch({ type: 'PRODUCT_UPDATE_SUCCESS', payload: data });
+    dispatch({ type: 'PRODUCT_ADD_REVIEW_REQUEST' });
+    await axios.post(`${PATH}/${productId}/reviews`, review, config);
+    dispatch({ type: 'PRODUCT_ADD_REVIEW_SUCCESS' });
   } catch (error) {
     dispatch({
-      type: 'PRODUCT_UPDATE_FAIL',
+      type: 'PRODUCT_ADD_REVIEW_FAIL',
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -30,6 +26,6 @@ export const updateProduct = (productData) => async (dispatch, getState) => {
   }
 };
 
-export const resetProduct = () => (dispatch) => {
-  dispatch({ type: 'PRODUCT_UPDATE_RESET' });
+export const resetAddReview = () => (dispatch) => {
+  dispatch({ type: 'PRODUCT_ADD_REVIEW_RESET' });
 };

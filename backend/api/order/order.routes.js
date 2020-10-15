@@ -7,6 +7,7 @@ const {
   getOrder,
   addOrder,
   updateOrderToPaid,
+  updateOrderToDelivered,
 } = require('./order.controller');
 
 const router = express.Router();
@@ -35,5 +36,15 @@ router.post('/', protect, asyncHandler(addOrder));
 // @route PUT /api/orders/:id/pay
 // @access Private
 router.put('/:id/pay', protect, asyncHandler(updateOrderToPaid));
+
+// @desc Update order to delivered
+// @route PUT /api/orders/:id/deliver
+// @access Private/Admin
+router.put(
+  '/:id/deliver',
+  protect,
+  isAdmin,
+  asyncHandler(updateOrderToDelivered)
+);
 
 module.exports = router;

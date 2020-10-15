@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getOrderList } from 'store/order-list/actions';
+import { deliverOrder, deliverReset } from 'store/order-deliver/actions';
 
 import OrderListItem from './OrderListItem';
 import { Spinner, Error } from 'components/shared';
@@ -37,13 +38,23 @@ const ProductList = ({
   error,
   user,
   orderList,
+  deliverOrder,
+  deliverSuccess,
+  deliverError,
+  deliverLoading,
+  deliverReset,
 }) => {
   const classes = useStyles();
 
   useEffect(() => {
+    if (deliverSuccess) deliverReset();
     if (!user.isAdmin) history.push('/signin');
     else getOrderList();
-  }, [user, history, getOrderList]);
+  }, [user, history, getOrderList, deliverSuccess, deliverReset]);
+
+  const onDeliver = (orderId) => {
+    deliverOrder(orderId);
+  };
 
   return (
     <div className='admin__userList'>
@@ -51,7 +62,8 @@ const ProductList = ({
         &#8592; Back to Profile
       </p>
       <h1>All Orders</h1>
-      {loading ? (
+      {deliverError && <Error error={deliverError} />}
+      {loading || deliverLoading ? (
         <Spinner />
       ) : error ? (
         <Error error={error} />
@@ -74,7 +86,12 @@ const ProductList = ({
             </TableHead>
             <TableBody>
               {orderList?.map((order, index) => (
-                <OrderListItem order={order} key={index} history={history} />
+                <OrderListItem
+                  order={order}
+                  key={index}
+                  history={history}
+                  onDeliver={onDeliver}
+                />
               ))}
             </TableBody>
           </Table>
@@ -89,10 +106,15 @@ const mapStateToProps = (state) => ({
   orderList: state.orderListApp.orderList,
   loading: state.orderListApp.loading,
   error: state.orderListApp.error,
+  deliverLoading: state.orderDeliverApp.loading,
+  deliverError: state.orderDeliverApp.error,
+  deliverSuccess: state.orderDeliverApp.success,
 });
 
 const mapDispatchToProps = {
   getOrderList,
+  deliverOrder,
+  deliverReset,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

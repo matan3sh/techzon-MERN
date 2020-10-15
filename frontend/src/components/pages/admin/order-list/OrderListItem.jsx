@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 
-import { ErrorIcon, InputIcon } from 'components/icons';
+import { ErrorIcon, InputIcon, CheckCircleIcon } from 'components/icons';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -26,7 +26,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const OrderListItem = ({ order, history }) => {
+const OrderListItem = ({ order, history, onDeliver }) => {
   return (
     <StyledTableRow key={order._id}>
       <StyledTableCell align='left'>{order._id}</StyledTableCell>
@@ -45,9 +45,19 @@ const OrderListItem = ({ order, history }) => {
         {order.isDelivered ? (
           moment(order.deliveredAt).format('LL')
         ) : (
-          <ErrorIcon className='uncheck' />
+          <div className='mark-as-delivered'>
+            <IconButton
+              onClick={() => onDeliver(order._id)}
+              color='default'
+              aria-label='order page'
+              component='span'
+            >
+              Mark as Delivered
+            </IconButton>
+          </div>
         )}
       </StyledTableCell>
+
       <StyledTableCell align='center'>
         <IconButton
           onClick={() => history.push(`/order/${order._id}`)}

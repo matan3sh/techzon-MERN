@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import { Success, Error } from 'components/shared';
 
@@ -26,7 +27,11 @@ const OrderDetailShipping = ({ orderDetails }) => {
           </span>
         </p>
         {orderDetails?.isDelivered ? (
-          <Success msg={`Delivered on ${orderDetails?.deliveredAt}`} />
+          <Success
+            msg={`Delivered on ${moment(orderDetails?.deliveredAt).format(
+              'LL'
+            )}`}
+          />
         ) : (
           <Error error='Not Delivered' />
         )}

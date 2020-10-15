@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadProducts } from 'store/product/actions';
 import { deleteProduct } from 'store/product-delete/actions';
+import { addProduct, resetProduct } from 'store/product-add/actions';
 
 import { Spinner, Error } from 'components/shared';
 import { AddIcon } from 'components/icons';
@@ -43,19 +44,30 @@ const ProductList = ({
   successDelete,
   loadingDelete,
   errorDelete,
+  addedProduct,
+  successAdd,
+  loadingAdd,
+  errorAdd,
+  addProduct,
 }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    if (user && user.isAdmin) loadProducts();
-    else history.push('/signin');
-  }, [user, history, loadProducts, successDelete]);
+    resetProduct();
+    if (!user.isAdmin) history.push('/signin');
+    if (successAdd) history.push(`/admin/product/${addedProduct._id}/edit`);
+    else loadProducts();
+  }, [user, history, loadProducts, successDelete, successAdd, addedProduct]);
 
   const onDelete = (id) => {
     const isConfirm = window.confirm(
       'Are you sure you want to delete this product?'
     );
     if (isConfirm) deleteProduct(id);
+  };
+
+  const onAdd = () => {
+    addProduct();
   };
 
   return (
@@ -65,12 +77,13 @@ const ProductList = ({
       </p>
       <div className='admin__header'>
         <h1>All Products</h1>
-        <button>
+        <button onClick={onAdd}>
           <AddIcon />
         </button>
       </div>
+      {errorAdd && <Error error={errorAdd} />}
       {errorDelete && <Error error={errorDelete} />}
-      {loading || loadingDelete ? (
+      {loading || loadingDelete || loadingAdd ? (
         <Spinner />
       ) : error ? (
         <Error error={error} />
@@ -112,10 +125,17 @@ const mapStateToProps = (state) => ({
   successDelete: state.productDeleteApp.success,
   loadingDelete: state.productDeleteApp.loading,
   errorDelete: state.productDeleteApp.error,
+  addedProduct: state.productAddApp.product,
+  loadingAdd: state.productAddApp.loading,
+  successAdd: state.productAddApp.success,
+  errorAdd: state.productAddApp.error,
 });
+
 const mapDispatchToProps = {
   loadProducts,
   deleteProduct,
+  addProduct,
+  resetProduct,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

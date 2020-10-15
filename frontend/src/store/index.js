@@ -12,6 +12,8 @@ import userListReducer from './user-list/reducer';
 import userDeleteReducer from './user-delete/reducer';
 import userUpdateReducer from './user-update/reducer';
 import productDeleteReducer from './product-delete/reducer';
+import productAddReducer from './product-add/reducer';
+import productUpdateReducer from './product-update/reducer';
 
 const rootReducer = combineReducers({
   mainApp: productReducer,
@@ -24,6 +26,8 @@ const rootReducer = combineReducers({
   userDeleteApp: userDeleteReducer,
   userUpdateApp: userUpdateReducer,
   productDeleteApp: productDeleteReducer,
+  productAddApp: productAddReducer,
+  productUpdateApp: productUpdateReducer,
 });
 
 const store = createStore(

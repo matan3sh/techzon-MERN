@@ -24,12 +24,23 @@
   margin-bottom: 5px;
 }
 
-.auth__container form input {
+.auth__container form input,
+.auth__container form textarea {
   height: 30px;
   margin-bottom: 10px;
   background-color: #fff;
   width: 98%;
   padding: 0 5px;
+}
+
+.auth__container form textarea {
+  height: 120px;
+  font-family: Roboto;
+  padding-top: 5px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
 }
 
 .auth__container p {

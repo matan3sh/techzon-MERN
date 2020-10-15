@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { connect } from 'react-redux';
 import { loadProduct } from 'store/product/actions';
 import { updateProduct, resetProduct } from 'store/product-update/actions';
@@ -30,6 +32,8 @@ const ProductEdit = ({
   const [countInStock, setCountInStock] = useState(0);
   const [image, setImage] = useState('');
   const [brand, setBrand] = useState('');
+
+  const [uploading, setUploading] = useState();
 
   useEffect(() => {
     if (successProductUpdate) {
@@ -70,6 +74,22 @@ const ProductEdit = ({
       image,
       brand,
     });
+  };
+
+  const onUploadFile = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    setUploading(true);
+    try {
+      const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+      const { data } = await axios.post('/api/upload', formData, config);
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
   };
 
   return (
@@ -144,6 +164,13 @@ const ProductEdit = ({
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
+            <input
+              type='file'
+              id='image-file'
+              label='Choose file'
+              onChange={onUploadFile}
+            />
+            {uploading && <Spinner />}
             <h5>Brand</h5>
             <input
               name='brand'

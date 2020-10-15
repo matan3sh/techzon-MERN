@@ -6,6 +6,7 @@ import productReducer from './product/reducer';
 import cartReducer from './cart/reducer';
 import userReducer from './user/reducer';
 import orderReducer from './order/reducer';
+import orderListReducer from './order-list/reducer';
 import paypalReducer from './paypal/reducer';
 import userOrdersReducer from './user-orders/reducer';
 import userListReducer from './user-list/reducer';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   cartApp: cartReducer,
   userApp: userReducer,
   orderApp: orderReducer,
+  orderListApp: orderListReducer,
   paypalApp: paypalReducer,
   userOrdersApp: userOrdersReducer,
   userListApp: userListReducer,

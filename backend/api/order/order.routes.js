@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { protect } = require('../../middleware/auth');
+const { protect, isAdmin } = require('../../middleware/auth');
 const {
   getOrders,
   getUserOrders,
@@ -13,8 +13,8 @@ const router = express.Router();
 
 // @desc Fetch all orders
 // @route GET /api/orders
-// @access Public
-router.get('/', asyncHandler(getOrders));
+// @access Private/Admin
+router.get('/', protect, isAdmin, asyncHandler(getOrders));
 
 // @desc logged in user orders
 // @route GET /api/orders/myorders

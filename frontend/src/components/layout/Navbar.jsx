@@ -50,7 +50,7 @@ const Navbar = ({ cartItems, user, logoutUser, cart }) => {
           <div className='navbar__option navbar__link'>
             <span className='navbar__option-one'>
               {user ? (
-                <span>{user.name}</span>
+                <span className='navbar_username'>Hello, {user.name}</span>
               ) : (
                 <>
                   <Link to='/signup'>Signup</Link> /

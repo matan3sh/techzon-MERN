@@ -6,6 +6,7 @@ const {
   deleteProduct,
   addProduct,
   updateProduct,
+  addReviewToProduct,
 } = require('./product.controller');
 const { protect, isAdmin } = require('../../middleware/auth');
 
@@ -25,6 +26,11 @@ router.post('/', protect, isAdmin, asyncHandler(addProduct));
 // @route GET /api/products/:id
 // @access Public
 router.get('/:id', asyncHandler(getProduct));
+
+// @desc Add new review to product
+// @route POST /api/products/:id/reviews
+// @access Private
+router.post('/:id/reviews', protect, asyncHandler(addReviewToProduct));
 
 // @desc Delete single product by id
 // @route DELETE /api/products/:id

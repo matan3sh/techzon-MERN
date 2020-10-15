@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 
-import { ErrorIcon, InputIcon, CheckCircleIcon } from 'components/icons';
+import { ErrorIcon, InputIcon } from 'components/icons';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {

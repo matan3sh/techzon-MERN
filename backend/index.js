@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { notFound, errorHandler } = require('./middleware/error');
+const morgan = require('morgan');
 const colors = require('colors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
@@ -11,6 +12,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // Routes
 const productRoutes = require('./api/product/product.routes');

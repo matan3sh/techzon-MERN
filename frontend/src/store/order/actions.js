@@ -15,6 +15,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     dispatch({ type: 'ORDER_CREATE_REQUEST' });
     const { data } = await axios.post(`${PATH}`, order, config);
     dispatch({ type: 'ORDER_CREATE_SUCCESS', payload: data });
+    localStorage.removeItem('cartItems');
   } catch (error) {
     dispatch({
       type: 'ORDER_CREATE_FAIL',

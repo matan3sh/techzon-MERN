@@ -16,6 +16,7 @@ import userUpdateReducer from './user-update/reducer';
 import productDeleteReducer from './product-delete/reducer';
 import productAddReducer from './product-add/reducer';
 import productUpdateReducer from './product-update/reducer';
+import productTopReducer from './product-top/reducer';
 import reviewAddReducer from './review-add/reducer';
 
 const rootReducer = combineReducers({
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   productDeleteApp: productDeleteReducer,
   productAddApp: productAddReducer,
   productUpdateApp: productUpdateReducer,
+  productTopApp: productTopReducer,
   reviewAddApp: reviewAddReducer,
 });
 

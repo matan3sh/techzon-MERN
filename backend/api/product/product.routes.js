@@ -7,6 +7,7 @@ const {
   addProduct,
   updateProduct,
   addReviewToProduct,
+  getTopProducts,
 } = require('./product.controller');
 const { protect, isAdmin } = require('../../middleware/auth');
 
@@ -16,6 +17,11 @@ const router = express.Router();
 // @route GET /api/products
 // @access Public
 router.get('/', asyncHandler(getProducts));
+
+// @desc Get top rated products
+// @route GET /api/products/top
+// @access Public
+router.get('/top', asyncHandler(getTopProducts));
 
 // @desc Create a product
 // @route POST /api/products

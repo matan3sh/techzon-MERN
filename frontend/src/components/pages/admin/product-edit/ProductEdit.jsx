@@ -136,6 +136,7 @@ const ProductEdit = ({
             <input
               name='price'
               min='0'
+              step='0.01'
               type='number'
               value={price}
               onChange={(e) => setPrice(e.target.value)}

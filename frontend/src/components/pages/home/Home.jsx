@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { loadProducts } from 'store/product/actions';
+import { loadTopProducts } from 'store/product-top/actions';
 
 import Banner from './Banner';
 import HomeProductList from './HomeProductList';
 import { Spinner, Error } from 'components/shared';
 
-const Home = ({ products, loadProducts, error, loading }) => {
+const Home = ({ products, loadTopProducts, error, loading }) => {
   useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    loadTopProducts();
+  }, [loadTopProducts]);
 
   return (
     <div className='home'>
@@ -26,12 +26,12 @@ const Home = ({ products, loadProducts, error, loading }) => {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.mainApp.products,
-  loading: state.mainApp.loading,
-  error: state.mainApp.error,
+  products: state.productTopApp.products,
+  loading: state.productTopApp.loading,
+  error: state.productTopApp.error,
 });
 const mapDispatchToProps = {
-  loadProducts,
+  loadTopProducts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

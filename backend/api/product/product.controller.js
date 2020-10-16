@@ -1,7 +1,7 @@
 const Product = require('../../models/product');
 
 getProducts = async (req, res) => {
-  const pageSize = 8;
+  const pageSize = 4;
   const page = Number(req.query.pageNumber) || 1;
 
   const text = req.query.search
@@ -114,6 +114,11 @@ addReviewToProduct = async (req, res) => {
   }
 };
 
+getTopProducts = async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(6);
+  res.json(products);
+};
+
 module.exports = {
   getProducts,
   getProduct,
@@ -121,4 +126,5 @@ module.exports = {
   addProduct,
   updateProduct,
   addReviewToProduct,
+  getTopProducts,
 };

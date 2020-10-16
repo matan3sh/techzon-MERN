@@ -30,12 +30,22 @@ function App() {
         <Route exact path='/payment' component={Payment} />
         <Route exact path='/shipping' component={Shipping} />
         <Route exact path='/profile' component={Profile} />
-        <Route exact path='/browse' component={Browse} />
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/admin/productlist' component={ProductList} />
+        <Route
+          exact
+          path='/admin/productlist/:pageNumber'
+          component={ProductList}
+        />
         <Route exact path='/admin/userlist' component={UserList} />
         <Route exact path='/admin/orderlist' component={OrderList} />
+        <Route exact path='/browse/:text?' component={Browse} />
+        <Route
+          exact
+          path='/browse/:text?/page/:pageNumber'
+          component={Browse}
+        />
         <Route exact path='/order/:id' component={OrderDetail} />
         <Route exact path='/cart/:id?' component={Cart} />
         <Route exact path='/admin/product/:id/edit' component={ProductEdit} />

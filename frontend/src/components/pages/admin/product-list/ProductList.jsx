@@ -4,7 +4,7 @@ import { loadProducts } from 'store/product/actions';
 import { deleteProduct } from 'store/product-delete/actions';
 import { addProduct, resetProduct } from 'store/product-add/actions';
 
-import { Spinner, Error } from 'components/shared';
+import { Spinner, Error, AppPagination } from 'components/shared';
 import { AddIcon } from 'components/icons';
 import ProductListItem from './ProductListItem';
 
@@ -49,15 +49,27 @@ const ProductList = ({
   loadingAdd,
   errorAdd,
   addProduct,
+  page,
+  pages,
+  match,
 }) => {
   const classes = useStyles();
+  const pageNumber = match.params.pageNumber || 1;
 
   useEffect(() => {
     resetProduct();
     if (!user.isAdmin) history.push('/signin');
     if (successAdd) history.push(`/admin/product/${addedProduct._id}/edit`);
-    else loadProducts();
-  }, [user, history, loadProducts, successDelete, successAdd, addedProduct]);
+    else loadProducts('', pageNumber);
+  }, [
+    user,
+    history,
+    loadProducts,
+    successDelete,
+    successAdd,
+    addedProduct,
+    pageNumber,
+  ]);
 
   const onDelete = (id) => {
     const isConfirm = window.confirm(
@@ -113,6 +125,7 @@ const ProductList = ({
           </Table>
         </TableContainer>
       )}
+      <AppPagination pages={pages} page={page} isAdmin />
     </div>
   );
 };
@@ -122,6 +135,8 @@ const mapStateToProps = (state) => ({
   products: state.mainApp.products,
   loading: state.mainApp.loading,
   error: state.mainApp.error,
+  pages: state.mainApp.pages,
+  page: state.mainApp.page,
   successDelete: state.productDeleteApp.success,
   loadingDelete: state.productDeleteApp.loading,
   errorDelete: state.productDeleteApp.error,

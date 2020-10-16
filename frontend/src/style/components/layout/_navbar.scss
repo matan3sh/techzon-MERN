@@ -49,6 +49,9 @@
   background-color: $second-color;
   padding: 5px;
   font-size: 32px !important;
+  &:hover {
+    cursor: pointer !important;
+  }
 }
 
 .navbar__list {

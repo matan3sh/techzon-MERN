@@ -1,8 +1,20 @@
 const Product = require('../../models/product');
 
 getProducts = async (req, res) => {
-  const products = await Product.find({}).sort({ createdAt: -1 });
-  res.json(products);
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const text = req.query.search
+    ? { title: { $regex: req.query.search, $options: 'i' } }
+    : {};
+
+  const count = await Product.countDocuments({ ...text });
+  const products = await Product.find({ ...text })
+    .sort({ createdAt: -1 })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 };
 
 getProduct = async (req, res) => {

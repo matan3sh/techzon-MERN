@@ -3,6 +3,8 @@ const initialState = {
   product: { reviews: [] },
   loading: false,
   error: null,
+  pages: null,
+  page: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -17,7 +19,9 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        products: action.payload,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
       };
     case 'PRODUCT_LIST_FAIL':
       return {

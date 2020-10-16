@@ -8,8 +8,8 @@ import { Spinner, Error } from 'components/shared';
 
 const Home = ({ products, loadProducts, error, loading }) => {
   useEffect(() => {
-    if (!products) loadProducts();
-  }, [loadProducts, products]);
+    loadProducts();
+  }, [loadProducts]);
 
   return (
     <div className='home'>

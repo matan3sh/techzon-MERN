@@ -4,7 +4,6 @@ import { logoutUser } from 'store/user/actions';
 
 import { Link } from 'react-router-dom';
 import {
-  SearchIcon,
   AddShoppingCartIcon,
   MenuIcon,
   CloseIcon,
@@ -14,6 +13,7 @@ import {
 import logo from 'assets/img/logo.png';
 import Sidenav from './Sidenav';
 import Dropdown from './Dropdown';
+import Search from './Search';
 
 const Navbar = ({ cartItems, user, logoutUser, cart }) => {
   const [openSidenav, setOpenSidenav] = useState(false);
@@ -41,10 +41,7 @@ const Navbar = ({ cartItems, user, logoutUser, cart }) => {
         <Link to='/'>
           <img src={logo} alt='techzon-logo' className='navbar__logo' />
         </Link>
-        <div className='navbar__search'>
-          <input type='text' className='navbar__search-input' />
-          <SearchIcon className='navbar__search-icon' />
-        </div>
+        <Search />
 
         <div className='navbar__list'>
           <div className='navbar__option navbar__link'>

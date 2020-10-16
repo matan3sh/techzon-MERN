@@ -7,3 +7,5 @@ backend/public
 backend/data
 backend/.env
 backend/seeder.js
+
+ngrok

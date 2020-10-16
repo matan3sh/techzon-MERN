@@ -29,6 +29,17 @@ app.use('/api/upload', uploadRoutes);
 // Static Folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'public')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is runing...');
+  });
+}
+
 // Middleware
 app.use(notFound);
 app.use(errorHandler);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadTopProducts } from 'store/product-top/actions';
 
 import Banner from './Banner';
+import Cards from './Cards';
 import HomeProductList from './HomeProductList';
 import { Spinner, Error } from 'components/shared';
 
@@ -21,6 +22,7 @@ const Home = ({ products, loadTopProducts, error, loading }) => {
       ) : (
         <HomeProductList products={products} />
       )}
+      <Cards />
     </div>
   );
 };

@@ -13,26 +13,26 @@
   object-fit: cover;
 }
 
-// @media screen and (max-width: 1290px) {
-//   .banner__image {
-//     margin-bottom: -300px;
-//   }
-// }
+@media screen and (max-width: 1290px) {
+  .banner__image {
+    margin-bottom: -300px;
+  }
+}
 
-// @media screen and (max-width: 1120px) {
-//   .banner__image {
-//     margin-bottom: -200px;
-//   }
-// }
+@media screen and (max-width: 1120px) {
+  .banner__image {
+    margin-bottom: -200px;
+  }
+}
 
-// @media screen and (max-width: 740px) {
-//   .banner__image {
-//     margin-bottom: -100px;
-//   }
-// }
+@media screen and (max-width: 740px) {
+  .banner__image {
+    margin-bottom: -100px;
+  }
+}
 
-// @media screen and (max-width: 540px) {
-//   .banner__image {
-//     margin-bottom: -75px;
-//   }
-// }
+@media screen and (max-width: 540px) {
+  .banner__image {
+    margin-bottom: -75px;
+  }
+}
